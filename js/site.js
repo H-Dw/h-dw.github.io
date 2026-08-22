@@ -104,59 +104,69 @@
     });
   }
 
-  function renderArc(research) {
-    var host = document.getElementById("arc");
+  function renderLoopLegend(process) {
+    var host = document.getElementById("loop-legend");
     host.innerHTML = "";
-    var prevStage = null;
+    (process.stages || []).forEach(function (s) {
+      host.appendChild(
+        el('<li><span class="loop-step">' + esc(s.label) +
+          '</span><span class="loop-note">' + esc(s.note) + "</span></li>")
+      );
+    });
+  }
 
-    (research.stages || []).forEach(function (s) {
-      var sameStage = s.stage === prevStage;
-      prevStage = s.stage;
+  function renderTracks(research) {
+    var host = document.getElementById("tracks");
+    host.innerHTML = "";
 
-      var rail = sameStage
-        ? '<div class="arc-rail" aria-hidden="true"></div>'
-        : '<div class="arc-rail"><span class="arc-index">' + esc(s.index) +
-          '</span><span class="arc-stage">' +
-          (s.core ? '<span class="arc-rail-dot"></span>' : "") +
-          esc(s.stage) + '</span><span class="arc-stage-note">' +
-          esc(s.stage_note) + "</span></div>";
+    (research.tracks || []).forEach(function (tr) {
+      var cards = (tr.stages || []).map(function (s) {
+        var tags = (s.tags || []).map(function (t) {
+          return '<span class="tag' + (t.kind === "accent" ? " tag-accent" : "") +
+            '">' + esc(t.text) + "</span>";
+        });
+        if (s.core) {
+          tags.unshift('<span class="tag tag-core">' + esc(research.core_label) + "</span>");
+        }
 
-      var tags = (s.tags || []).map(function (t) {
-        return '<span class="tag' + (t.kind === "accent" ? " tag-accent" : "") +
-          '">' + esc(t.text) + "</span>";
-      });
-      if (s.core) {
-        tags.unshift('<span class="tag tag-core">' + esc(research.core_label) + "</span>");
-      }
+        var metrics = (s.metrics || []).map(function (m) {
+          return '<div class="metric"><span class="metric-val">' + esc(m.value) +
+            '</span><span class="metric-label">' + esc(m.label) + "</span></div>";
+        }).join("");
 
-      var metrics = (s.metrics || []).map(function (m) {
-        return '<div class="metric"><span class="metric-val">' + esc(m.value) +
-          '</span><span class="metric-label">' + esc(m.label) + "</span></div>";
-      }).join("");
+        var contribs = (s.contributions || []).map(function (c) {
+          return '<li class="contrib-item"><h4>' + md(c.title) + "</h4><p>" +
+            md(c.text) + "</p></li>";
+        }).join("");
 
-      var contribs = (s.contributions || []).map(function (c) {
-        return '<li class="contrib-item"><h4>' + md(c.title) + "</h4><p>" +
-          md(c.text) + "</p></li>";
+        return '<article class="pcard' + (s.core ? " pcard-core" : "") +
+          '" id="p-' + esc(s.id) + '">' +
+            '<h3 class="pcard-title">' + md(s.title) + "</h3>" +
+            '<p class="pcard-sub">' + esc(s.subtitle) + "</p>" +
+            '<div class="pcard-tags">' + tags.join("") + "</div>" +
+            '<div class="qi">' +
+              '<div class="qi-block"><span class="qi-label">' + esc(labelQuestion()) +
+                '</span><p class="qi-text">' + md(s.question) + "</p></div>" +
+              '<div class="qi-block qi-insight"><span class="qi-label">' + esc(labelInsight()) +
+                '</span><p class="qi-text">' + md(s.insight) + "</p></div>" +
+            "</div>" +
+            (metrics ? '<div class="metrics">' + metrics + "</div>" : "") +
+            (contribs
+              ? '<details class="contrib"><summary>' + esc(research.details_label) +
+                '</summary><ul class="contrib-list">' + contribs + "</ul></details>"
+              : "") +
+          "</article>";
       }).join("");
 
       host.appendChild(el(
-        '<div class="arc-row">' + rail +
-        '<article class="pcard' + (s.core ? " pcard-core" : "") + '" id="p-' + esc(s.id) + '">' +
-          '<h3 class="pcard-title">' + md(s.title) + "</h3>" +
-          '<p class="pcard-sub">' + esc(s.subtitle) + "</p>" +
-          '<div class="pcard-tags">' + tags.join("") + "</div>" +
-          '<div class="qi">' +
-            '<div class="qi-block"><span class="qi-label">' + esc(labelQuestion()) +
-              '</span><p class="qi-text">' + md(s.question) + "</p></div>" +
-            '<div class="qi-block qi-insight"><span class="qi-label">' + esc(labelInsight()) +
-              '</span><p class="qi-text">' + md(s.insight) + "</p></div>" +
-          "</div>" +
-          (metrics ? '<div class="metrics">' + metrics + "</div>" : "") +
-          (contribs
-            ? '<details class="contrib"><summary>' + esc(research.details_label) +
-              '</summary><ul class="contrib-list">' + contribs + "</ul></details>"
-            : "") +
-        "</article></div>"
+        '<section class="track" id="track-' + esc(tr.id) + '">' +
+          '<header class="track-head">' +
+            '<span class="track-numeral">' + esc(tr.numeral) + "</span>" +
+            '<h3 class="track-label">' + esc(tr.label) + "</h3>" +
+            '<p class="track-note">' + md(tr.note) + "</p>" +
+          "</header>" +
+          '<div class="track-cards">' + cards + "</div>" +
+        "</section>"
       ));
     });
   }
@@ -270,6 +280,9 @@
     var desc = document.querySelector('meta[name="description"]');
     if (desc) desc.setAttribute("content", String(data.meta.description).trim());
 
+    var portrait = document.getElementById("portrait");
+    if (portrait) portrait.alt = String(data.hero.portrait_alt || data.hero.name).trim();
+
     var mail = document.getElementById("contact-mail");
     mail.href = "mailto:" + data.contact.email;
     mail.textContent = data.contact.email;
@@ -289,8 +302,9 @@
     data.brand = data.hero.name;
     bindSimple(data);
     renderActions(data.hero.actions);
+    renderLoopLegend(data.process);
     renderLedger(data.ledger);
-    renderArc(data.research);
+    renderTracks(data.research);
     renderPubs(data.publications);
     renderPositions(data.background.positions);
     renderSidecards(data.background);
@@ -370,8 +384,8 @@
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
-    if (window.initContactMap) {
-      window.initContactMap(document.getElementById("cmap-canvas"));
+    if (window.initLatentSearch) {
+      window.initLatentSearch(document.getElementById("loop-canvas"));
     }
   }
 

@@ -1,7 +1,7 @@
 # h-dw.github.io
 
-Personal research homepage for **Dawei Huang (黄达威)** — generative modeling
-and inference-time search for protein design.
+Personal research homepage for **Dawei Huang (黄达威)** — latent generative
+structure design and self-improving agents.
 
 Live at **https://h-dw.github.io/**
 
@@ -12,25 +12,26 @@ Live at **https://h-dw.github.io/**
 ```
 .
 ├── index.html              page shell — sections and their containers only
-├── css/site.css            all styling, design tokens at the top
+├── css/site.css            all styling; design tokens at the top
 ├── js/site.js              renders the page from the YAML below
-├── js/contact-map.js       the hero figure (canvas contact map)
+├── js/latent-search.js     the hero-strip diagram (canvas)
+├── js/brand-icons.js       inlined Simple Icons marks
 ├── js/vendor/              marked 5.1.0, js-yaml 4.1.0
 ├── contents/
 │   ├── site.en.yml         ← all English content
 │   └── site.zh.yml         ← all Chinese content
 └── assets/
-    ├── avatar.jpg          portrait used in the hero
-    ├── avatar-formal.jpg   spare formal portrait, swap in if preferred
+    ├── portrait.jpg        hero portrait (4:5)
+    ├── hero-bg.jpg         hero background, Jade Dragon Snow Mountain at dawn
+    ├── hero-bg-alt.jpg     spare background (blue hour), swap in if preferred
     ├── sustech.png
     ├── favicon.svg / .ico
     └── cv/                 CV PDFs linked from the hero buttons
 ```
 
 **To change what the site says, edit `contents/site.en.yml` and
-`contents/site.zh.yml`.** You should never need to touch the HTML. The two
-files must keep the same structure — the renderer reads the same keys from
-both.
+`contents/site.zh.yml`.** You should never need to touch the HTML. The two files
+must keep the same structure — the renderer reads the same keys from both.
 
 Every text field accepts inline markdown: `**bold**`, `*italic*`, `` `code` ``
 and `[text](url)`.
@@ -39,20 +40,24 @@ and `[text](url)`.
 
 **Add a Google Scholar / ORCID / LinkedIn button.** Find the `hero.actions`
 list and fill in the empty `href`. Buttons with an empty `href` stay hidden, so
-nothing appears until the link is real.
+nothing appears until the link is real. Do it in both language files.
 
 **Add a paper.** Add an item under the right group in `publications.groups`.
 Set `doi:` and the renderer builds the link.
 
-**Add a project.** Add an entry to `research.stages`. Reuse an existing `stage`
-value to group it under the same rail heading; give it a new one to start a new
-stage.
+**Add a project.** Add an entry to the `stages` list of whichever track it
+belongs to under `research.tracks`. Set `core: true` to give it the accent
+border and the "core work" tag — only one project should have it.
 
-**Swap the portrait.** Replace `assets/avatar.jpg`, or point the `src` in
-`index.html` at `assets/avatar-formal.jpg`.
+**Add a track.** Add an entry to `research.tracks` with `numeral`, `label`,
+`note` and its own `stages`.
 
-**Update the CV.** Overwrite the PDFs in `assets/cv/` keeping the same
-filenames.
+**Swap the hero background.** Point the `<img>` in `.hero-photo` at
+`assets/hero-bg-alt.jpg`. The image is mirrored in CSS so the summit lands on
+the right where no type is set — if you change the photo, check
+`.hero-photo img { object-position }` and the `transform: scaleX(-1)`.
+
+**Update the CV.** Overwrite the PDFs in `assets/cv/`, keeping the filenames.
 
 ## Previewing locally
 
@@ -81,12 +86,14 @@ Changes are live in about a minute.
 
 ## Credits
 
+Photographs taken at Jade Dragon Snow Mountain, Lijiang.
+
 Rebuilt in 2026 from a fork of
 [Yixin Huang's personal homepage template](https://github.com/Yixin0313/personal-homepage-template),
 itself based on [Sen Li's academic template](https://github.com/senli1073/senli1073.github.io).
-The layout, styling and rendering code have been rewritten; the MIT licence
-from the original template is retained.
+The layout, styling and rendering code have been rewritten; the MIT licence from
+the original template is retained.
 
 Vendored libraries: [marked](https://github.com/markedjs/marked) (MIT),
-[js-yaml](https://github.com/nodeca/js-yaml) (MIT). Toolkit icons are served
-from [Simple Icons](https://simpleicons.org/) (CC0).
+[js-yaml](https://github.com/nodeca/js-yaml) (MIT). Toolkit marks from
+[Simple Icons](https://simpleicons.org/) (CC0), inlined.

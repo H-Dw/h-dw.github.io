@@ -4,29 +4,31 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dawei Huang · Generative modeling for protein design</title>
+  <title>Dawei Huang · Latent generative structure design &amp; self-improving agents</title>
   <meta name="description"
-    content="Dawei Huang builds latent representation spaces and inference-time search for generative models of interacting biomolecules. Tencent AI Lab, Foundation Model for Science." />
+    content="Dawei Huang works on latent representation spaces for generative structure design and on search loops that improve themselves from their own results." />
   <meta name="author" content="Dawei Huang" />
+  <meta name="theme-color" content="#EEF0F1" />
   <link rel="canonical" href="https://h-dw.github.io/" />
 
   <meta property="og:type" content="profile" />
-  <meta property="og:title" content="Dawei Huang · Generative modeling for protein design" />
+  <meta property="og:title" content="Dawei Huang · Latent generative structure design &amp; self-improving agents" />
   <meta property="og:description"
-    content="Latent representation spaces and inference-time search for generative models of interacting biomolecules." />
+    content="Latent representation spaces for generative structure design, and search loops that improve themselves." />
   <meta property="og:url" content="https://h-dw.github.io/" />
-  <meta property="og:image" content="https://h-dw.github.io/assets/avatar.jpg" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://h-dw.github.io/assets/hero-bg.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="alternate icon" href="assets/favicon.ico" />
-  <link rel="apple-touch-icon" href="assets/avatar.jpg" />
+  <link rel="apple-touch-icon" href="assets/portrait-sm.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap"
     rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/hero-bg.jpg" />
 
   <link rel="stylesheet" href="css/site.css" />
 </head>
@@ -38,9 +40,12 @@
   <header class="topbar" id="topbar">
     <div class="shell topbar-inner">
       <a class="brand" href="#top">
-        <span class="brand-mark" aria-hidden="true">
-          <span></span><span></span><span></span><span></span>
-        </span>
+        <svg class="brand-mark" viewBox="0 0 22 16" aria-hidden="true">
+          <path d="M2 8 H7 L12 4 H20 M12 12 H20 M7 8 L12 12" />
+          <circle cx="2" cy="8" r="1.6" class="brand-dot-a" />
+          <circle cx="20" cy="4" r="2" class="brand-dot-b" />
+          <circle cx="20" cy="12" r="1.4" class="brand-dot-c" />
+        </svg>
         <span class="brand-name" data-bind="brand"></span>
       </a>
 
@@ -58,12 +63,16 @@
   </header>
 
   <main id="main">
-    <!-- ── Hero: the instrument panel ────────────────────────────────── -->
+    <!-- ── Hero ──────────────────────────────────────────────────────── -->
     <section class="hero" id="top">
+      <div class="hero-photo" aria-hidden="true">
+        <img src="assets/hero-bg.jpg" alt="" fetchpriority="high" />
+      </div>
       <div class="shell hero-grid">
-
+        <figure class="hero-portrait">
+          <img src="assets/portrait.jpg" alt="" width="720" height="900" id="portrait" />
+        </figure>
         <div class="hero-text">
-          <img class="hero-avatar" src="assets/avatar.jpg" alt="Dawei Huang" width="72" height="72" />
           <p class="hero-eyebrow" data-bind="hero.eyebrow"></p>
           <h1 class="hero-name">
             <span class="hero-name-main" data-bind="hero.name"></span>
@@ -72,24 +81,23 @@
           <p class="hero-thesis" data-bind-md="hero.thesis"></p>
           <div class="hero-actions" id="hero-actions"></div>
         </div>
+      </div>
+    </section>
 
-        <figure class="cmap">
-          <!-- axis proportions mirror SPLIT / N in js/contact-map.js -->
-          <div class="cmap-axis" aria-hidden="true">
-            <span class="cmap-axis-seg" style="flex:30" data-bind="hero.figure.label_target"></span>
-            <span class="cmap-axis-seg" style="flex:22" data-bind="hero.figure.label_binder"></span>
-          </div>
-          <div class="cmap-frame">
-            <canvas id="cmap-canvas" role="img"
-              aria-label="Residue contact map of a two-chain protein complex. Two diagonal blocks show contacts within the target and within the binder; a highlighted off-diagonal block shows contacts across the interface."></canvas>
-            <span class="cmap-tag cmap-tag-i" data-bind="hero.figure.label_interface"></span>
+    <!-- ── Process strip: the signature diagram ──────────────────────── -->
+    <section class="strip">
+      <div class="shell">
+        <p class="eyebrow" data-bind="process.eyebrow"></p>
+        <figure class="loop">
+          <div class="loop-canvas">
+            <canvas id="loop-canvas" role="img"
+              aria-label="A diagram running left to right: a cloud of latent samples, a search tree whose weak branches are pruned and one of which is rolled back, and a surviving path that carries samples into an assembled structure."></canvas>
           </div>
           <figcaption>
-            <span class="cmap-title" data-bind="hero.figure.title"></span>
-            <span class="cmap-caption" data-bind-md="hero.figure.caption"></span>
+            <ol class="loop-legend" id="loop-legend"></ol>
+            <p class="loop-caption" data-bind-md="process.caption"></p>
           </figcaption>
         </figure>
-
       </div>
     </section>
 
@@ -108,7 +116,7 @@
           <h2 class="section-title" data-bind="research.title"></h2>
           <p class="section-intro" data-bind-md="research.intro"></p>
         </div>
-        <div class="arc" id="arc"></div>
+        <div class="tracks" id="tracks"></div>
       </div>
     </section>
 
@@ -164,7 +172,7 @@
   <script src="js/vendor/marked.min.js"></script>
   <script src="js/vendor/js-yaml.min.js"></script>
   <script src="js/brand-icons.js"></script>
-  <script src="js/contact-map.js"></script>
+  <script src="js/latent-search.js"></script>
   <script src="js/site.js"></script>
 </body>
 
