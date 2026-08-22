@@ -1,72 +1,92 @@
-![Github Forks](https://img.shields.io/github/forks/Yixin0313/personal-homepage-template?style=flat)
-![Github Stars](https://img.shields.io/github/stars/Yixin0313/personal-homepage-template?style=flat)
-![License](https://img.shields.io/github/license/Yixin0313/personal-homepage-template)
+# h-dw.github.io
 
-# 通用个人主页模板：适用于学术和求职场景 | A general-purpose template: suitable for both academic and professional use.
+Personal research homepage for **Dawei Huang (黄达威)** — generative modeling
+and inference-time search for protein design.
 
-## 预览 | Preview
-[![Screenshot of the Website](https://raw.githubusercontent.com/Yixin0313/personal-homepage-template/main/screenshot_full.png)](https://yixin0313.github.io/personal-homepage-template/)
+Live at **https://h-dw.github.io/**
 
-## 介绍 | Introduction
+---
 
-这是一个**通用的个人主页模板**，基于 [Sen Li 的学术主页模板](https://github.com/senli1073/senli1073.github.io) 进行修改。  
+## What is where
 
-我新增了**工作经历板块**，使其更加适用于程序员和求职者。并且使用了中英文对照版本。
-
-This is a **general-purpose personal website template**, modified from [Sen Li's academic template](https://github.com/senli1073/senli1073.github.io).  
-
-I have added a **work experience section**, making it more practical for programmers and job seekers.
-
-Bilibili教程视频：【【2025最新保姆级教程】手把手教你用github制作个人主页（申学找工作必备）】https://www.bilibili.com/video/BV16nNMeFEzm?vd_source=79b688b1a191b9f9e8204aa1c3d0adab
-
-CSDN教程：https://blog.csdn.net/qq_45743991/article/details/145505150?spm=1001.2014.3001.5502
-
-## 快速开始 | Getting Start
-### 1. Fork 该仓库 | Fork this repository
-仓库名称应命名为 `<用户名>.github.io`，这样你的个人网站地址将是 `https://<用户名>.github.io/`。
-
-The repository name should be `<username>.github.io`, which will also be your website's URL.
-
-
-### 2.  编辑页面内容 | Edit page content
-(1) 进入你想存放项目的文件夹，并克隆新的仓库 | Go to the folder where you want to store your project, and clone the new repository:
 ```
-git clone https://github.com/<username>/<username>.github.io.git
-```
-项目的目录结构如下 | The directory structure is as follows:
-
-```.
 .
-├── contents
-└── static
-    ├── assets
-    │   └── img
-    ├── css
-    └── js
+├── index.html              page shell — sections and their containers only
+├── css/site.css            all styling, design tokens at the top
+├── js/site.js              renders the page from the YAML below
+├── js/contact-map.js       the hero figure (canvas contact map)
+├── js/vendor/              marked 5.1.0, js-yaml 4.1.0
+├── contents/
+│   ├── site.en.yml         ← all English content
+│   └── site.zh.yml         ← all Chinese content
+└── assets/
+    ├── avatar.jpg          portrait used in the hero
+    ├── avatar-formal.jpg   spare formal portrait, swap in if preferred
+    ├── sustech.png
+    ├── favicon.svg / .ico
+    └── cv/                 CV PDFs linked from the hero buttons
 ```
 
-(2) 修改各个板块的内容 | Modify the content of each section, which corresponds to `contents/*.md`.
+**To change what the site says, edit `contents/site.en.yml` and
+`contents/site.zh.yml`.** You should never need to touch the HTML. The two
+files must keep the same structure — the renderer reads the same keys from
+both.
 
-(3) 调整网站设置 | Adjust the title, copyright information, and other text of the website in `contents/config.yml`
+Every text field accepts inline markdown: `**bold**`, `*italic*`, `` `code` ``
+and `[text](url)`.
 
-(4) 替换图片 | Replace background image and photo with new ones for your web pages in `static/assets/img/`
+## Common edits
 
-(5) 提交更改 | Push it: 
+**Add a Google Scholar / ORCID / LinkedIn button.** Find the `hero.actions`
+list and fill in the empty `href`. Buttons with an empty `href` stay hidden, so
+nothing appears until the link is real.
+
+**Add a paper.** Add an item under the right group in `publications.groups`.
+Set `doi:` and the renderer builds the link.
+
+**Add a project.** Add an entry to `research.stages`. Reuse an existing `stage`
+value to group it under the same rail heading; give it a new one to start a new
+stage.
+
+**Swap the portrait.** Replace `assets/avatar.jpg`, or point the `src` in
+`index.html` at `assets/avatar-formal.jpg`.
+
+**Update the CV.** Overwrite the PDFs in `assets/cv/` keeping the same
+filenames.
+
+## Previewing locally
+
+The page fetches its content at runtime, so opening `index.html` straight from
+the file system will not work — the browser blocks the fetch. Serve the folder
+instead:
+
+```bash
+python -m http.server 8000
+# then open http://localhost:8000
 ```
-git commit -am 'init'
+
+## Publishing
+
+The repository must be named `<your-username>.github.io` for the site to be
+served at the root domain. Enable Pages under **Settings → Pages → Build and
+deployment → Deploy from a branch → `main` / `(root)`**, then push:
+
+```bash
+git add -A
+git commit -m "Update homepage"
 git push
 ```
 
+Changes are live in about a minute.
 
-### 3. 访问你的网站 | Enjoy
+## Credits
 
-打开浏览器，访问 https://<用户名>.github.io，即可查看你的个人主页
+Rebuilt in 2026 from a fork of
+[Yixin Huang's personal homepage template](https://github.com/Yixin0313/personal-homepage-template),
+itself based on [Sen Li's academic template](https://github.com/senli1073/senli1073.github.io).
+The layout, styling and rendering code have been rewritten; the MIT licence
+from the original template is retained.
 
-Fire up a browser and go to `https://<username>.github.io`
-
-
-
-## License
-本项目基于 MIT 许可协议，你可以自由使用和修改此模板。 Yixin Huang 2025年2月7号
-
-Copyright Yixin Huang, 2025. Licensed under an MIT license. You can copy and mess with this template.
+Vendored libraries: [marked](https://github.com/markedjs/marked) (MIT),
+[js-yaml](https://github.com/nodeca/js-yaml) (MIT). Toolkit icons are served
+from [Simple Icons](https://simpleicons.org/) (CC0).

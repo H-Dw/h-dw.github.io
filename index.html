@@ -1,192 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Academic Webpage" />
-    <meta name="author" content="yixin0313" />
-    <title id="title"></title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dawei Huang · Generative modeling for protein design</title>
+  <meta name="description"
+    content="Dawei Huang builds latent representation spaces and inference-time search for generative models of interacting biomolecules. Tencent AI Lab, Foundation Model for Science." />
+  <meta name="author" content="Dawei Huang" />
+  <link rel="canonical" href="https://h-dw.github.io/" />
 
-    <!-- Icon -->
-    <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Dawei Huang · Generative modeling for protein design" />
+  <meta property="og:description"
+    content="Latent representation spaces and inference-time search for generative models of interacting biomolecules." />
+  <meta property="og:url" content="https://h-dw.github.io/" />
+  <meta property="og:image" content="https://h-dw.github.io/assets/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
 
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="assets/avatar.jpg" />
 
-    <!-- Google fonts-->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap"
-        rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+    rel="stylesheet" />
 
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link type="text/css" href="static/css/styles.css" rel="stylesheet" />
-    <link type="text/css" href="static/css/main.css" rel="stylesheet" />
-
-    <!-- Bootstrap core JS-->
-    <script type="text/javascript" src="static/js/bootstrap.bundle.min.js"></script>
-
-    <!-- For Compatability -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-
-    <!-- Markdown -->
-    <script type="text/javascript" src="static/js/marked.min.js"></script>
-
-    <!-- Mathematics -->
-    <script>
-        // See https://docs.mathjax.org/en/latest/index.html for more details.
-        MathJax = {
-            tex: {
-                packages: {},              // extensions to use
-                inlineMath: [              // start/end delimiter pairs for in-line math
-                    ['$', '$'],
-                    ['\\(', '\\)']
-                ],
-                displayMath: [             // start/end delimiter pairs for display math
-                    ['$$', '$$'],
-                    ['\\[', '\\]']
-                ],
-                processEscapes: false,      // use \$ to produce a literal dollar sign
-                processEnvironments: true, // process \begin{xxx}...\end{xxx} outside math mode
-                processRefs: true,         // process \ref{...} outside of math mode
-                digits: /^(?:[0-9]+(?:\{,\}[0-9]{3})*(?:\.[0-9]*)?|\.[0-9]+)/,    // pattern for recognizing numbers
-                tags: 'all',              // or 'ams' or 'all'
-                tagSide: 'right',          // side for \tag macros
-                tagIndent: '0.8em',        // amount to indent tags
-                useLabelIds: true,         // use label name rather than tag for ids
-                maxMacros: 10000,          // maximum number of macro substitutions per expression
-                maxBuffer: 5 * 1024,       // maximum size for the internal TeX string (5K)
-                // baseURL:                   // URL for use with links to tags (when there is a <base> tag in effect)
-                // (document.getElementsByTagName('base').length === 0) ? '' : String(document.location).replace(/#.*$/, ''),
-                formatError:               // function called when TeX syntax errors occur
-                    (jax, err) => jax.formatError(err)
-            }
-        };
-    </script>
-    <script type="text/javascript" id="MathJax-script"
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-    <script type="text/javascript" id="MathJax-script" async
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-    <!-- Core JS-->
-    <script type="text/javascript" src="static/js/scripts.js"></script>
-    <script type="text/javascript" src="static/js/js-yaml.min.js"></script>
-
+  <link rel="stylesheet" href="css/site.css" />
 </head>
 
-<body id="page-top">
-    <!-- Navigation-->
-    <nav class="header navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
-        <div class="container px-5">
-            <a id="page-top-title" class="navbar-brand fw-bold" href="#page-top"></a>
-            <!-- <a href="#page-top"><img src="static/assets/img/CUMT_LOGO.svg" style="width: 11rem;"></a> -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                MENU
-                <i class="bi-list"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link me-lg-3" href="#home">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-lg-3" href="#awards">AWARDS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-lg-3" href="#experience">EXPERIENCE</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-lg-3" href="#publications">PUBLICATIONS</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- Top Section -->
-    <section class="top-section" style="background-image: url('static/assets/img/background.jpeg');">
-        <div class="top-section-content">
-            <div class="container px-5">
-                <h2 id="top-section-bg-text" class="text-white display-3 lh-1 font-alt"></h2>
-            </div>
-        </div>
-    </section>
-    <!-- Top Section -->
+  <!-- ── Top bar ─────────────────────────────────────────────────────── -->
+  <header class="topbar" id="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </span>
+        <span class="brand-name" data-bind="brand"></span>
+      </a>
 
-    <!-- Photo -->
-    <div class="container px-5">
-        <div id="avatar">
-            <img class="shadow" src="static/assets/img/photo.png">
-        </div>
+      <nav class="topnav" aria-label="Sections">
+        <a href="#research" data-bind="nav.research"></a>
+        <a href="#publications" data-bind="nav.publications"></a>
+        <a href="#background" data-bind="nav.background"></a>
+        <a href="#contact" data-bind="nav.contact"></a>
+      </nav>
+
+      <button class="lang-toggle" id="lang-toggle" type="button">
+        <span data-bind="meta.switch_to"></span>
+      </button>
     </div>
-    <!-- Photo -->
+  </header>
 
-    <!-- Home -->
-    <section class="bg-gradient-primary-to-secondary-light mt5 md5" id="home">
-        <div class="container px-5">
-            <header>
-                <h2 id="home-subtitle"> </h2>
-                <!-- <span class="bi bi-list"></span> -->
-            </header>
-            <div class="main-body" id="home-md"></div>
+  <main id="main">
+    <!-- ── Hero: the instrument panel ────────────────────────────────── -->
+    <section class="hero" id="top">
+      <div class="shell hero-grid">
+
+        <div class="hero-text">
+          <img class="hero-avatar" src="assets/avatar.jpg" alt="Dawei Huang" width="72" height="72" />
+          <p class="hero-eyebrow" data-bind="hero.eyebrow"></p>
+          <h1 class="hero-name">
+            <span class="hero-name-main" data-bind="hero.name"></span>
+            <span class="hero-name-alt" data-bind="hero.name_native"></span>
+          </h1>
+          <p class="hero-thesis" data-bind-md="hero.thesis"></p>
+          <div class="hero-actions" id="hero-actions"></div>
         </div>
+
+        <figure class="cmap">
+          <!-- axis proportions mirror SPLIT / N in js/contact-map.js -->
+          <div class="cmap-axis" aria-hidden="true">
+            <span class="cmap-axis-seg" style="flex:30" data-bind="hero.figure.label_target"></span>
+            <span class="cmap-axis-seg" style="flex:22" data-bind="hero.figure.label_binder"></span>
+          </div>
+          <div class="cmap-frame">
+            <canvas id="cmap-canvas" role="img"
+              aria-label="Residue contact map of a two-chain protein complex. Two diagonal blocks show contacts within the target and within the binder; a highlighted off-diagonal block shows contacts across the interface."></canvas>
+            <span class="cmap-tag cmap-tag-i" data-bind="hero.figure.label_interface"></span>
+          </div>
+          <figcaption>
+            <span class="cmap-title" data-bind="hero.figure.title"></span>
+            <span class="cmap-caption" data-bind-md="hero.figure.caption"></span>
+          </figcaption>
+        </figure>
+
+      </div>
     </section>
-    <!-- Home -->
 
-    <!-- Awards -->
-    <section class="bg-gradient-primary-to-secondary-light mt5 md5" id="awards">
-        <div class="container px-5">
-            <header>
-                <h2 id="awards-subtitle"><i class="bi bi-award-fill"></i>AWARDS </h2>
-            </header>
-            <div class="main-body" id="awards-md"></div>
-
-        </div>
+    <!-- ── Ledger ────────────────────────────────────────────────────── -->
+    <section class="ledger-band">
+      <div class="shell">
+        <dl class="ledger" id="ledger"></dl>
+      </div>
     </section>
-    <!-- Awards -->
 
-    <!-- Experience -->
-    <section class="bg-gradient-primary-to-secondary-dark mt5 md5" id="experience">
-        <div class="container px-5">
-            <header>
-                <h2 id="experience-subtitle"><i class="bi bi-briefcase-fill"></i> EXPERIENCE </h2>
-            </header>
-            <div class="main-body" id="experience-md"></div>
+    <!-- ── Research ──────────────────────────────────────────────────── -->
+    <section class="section" id="research">
+      <div class="shell">
+        <div class="section-head">
+          <p class="eyebrow" data-bind="research.eyebrow"></p>
+          <h2 class="section-title" data-bind="research.title"></h2>
+          <p class="section-intro" data-bind-md="research.intro"></p>
         </div>
+        <div class="arc" id="arc"></div>
+      </div>
     </section>
-    <!-- Experience -->
 
-    <!-- Publications -->
-    <section class="bg-gradient-primary-to-secondary-gray mt5 md5" id="publications">
-        <div class="container px-5">
-            <header>
-                <h2 id="publications-subtitle"><i class="bi bi-file-text-fill"></i>&nbsp;PUBLICATIONS</h2>
-            </header>
-            <div class="main-body" id="publications-md"></div>
-
+    <!-- ── Publications ──────────────────────────────────────────────── -->
+    <section class="section section-alt" id="publications">
+      <div class="shell">
+        <div class="section-head">
+          <p class="eyebrow" data-bind="publications.eyebrow"></p>
+          <h2 class="section-title" data-bind="publications.title"></h2>
+          <p class="section-intro" data-bind-md="publications.note"></p>
         </div>
+        <div class="pubs" id="pubs"></div>
+      </div>
     </section>
-    <!-- Publications  -->
 
-    <!-- Footer-->
-    <footer class="bg-bottom text-center py-5">
-        <div class="container px-5">
-            <div class="text-white-50 small">
-                <div id="copyright-text" class="mb-2"></div>
-                <a id="github-link" href="https://github.com/senli1073">Github</a>
-                <span class="mx-1">&middot;</span>
-                <a id="license-link"
-                    href="https://github.com/senli1073/senli1073.github.io/blob/main/LICENSE">License</a>
-            </div>
+    <!-- ── Background ────────────────────────────────────────────────── -->
+    <section class="section" id="background">
+      <div class="shell">
+        <div class="section-head">
+          <p class="eyebrow" data-bind="background.eyebrow"></p>
+          <h2 class="section-title" data-bind="background.title"></h2>
         </div>
-    </footer>
+        <div class="positions" id="positions"></div>
+        <div class="sidecards" id="sidecards"></div>
+      </div>
+    </section>
 
+    <!-- ── Contact ───────────────────────────────────────────────────── -->
+    <section class="section contact" id="contact">
+      <div class="shell contact-inner">
+        <p class="eyebrow" data-bind="contact.eyebrow"></p>
+        <h2 class="section-title" data-bind="contact.title"></h2>
+        <p class="contact-text" data-bind-md="contact.text"></p>
+        <a class="contact-mail" id="contact-mail" href="mailto:dawei_huang@163.com"></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-inner">
+      <p class="footer-copy" id="footer-copy"></p>
+      <p class="footer-note" data-bind="contact.footer_note"></p>
+    </div>
+  </footer>
+
+  <noscript>
+    <div class="shell noscript">
+      This page renders its content with JavaScript. The same material is in the
+      CV: <a href="assets/cv/Dawei-Huang-CV-EN.pdf">Dawei-Huang-CV-EN.pdf</a>.
+    </div>
+  </noscript>
+
+  <script src="js/vendor/marked.min.js"></script>
+  <script src="js/vendor/js-yaml.min.js"></script>
+  <script src="js/brand-icons.js"></script>
+  <script src="js/contact-map.js"></script>
+  <script src="js/site.js"></script>
 </body>
 
 </html>

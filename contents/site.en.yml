@@ -1,0 +1,463 @@
+# ---------------------------------------------------------------------------
+# English content for daweihuang homepage.
+# Edit this file to change the site. No HTML needed.
+# Inline markdown (**bold**, `code`, [link](url)) works in every text field.
+# The Chinese version lives in site.zh.yml and must keep the same structure.
+# ---------------------------------------------------------------------------
+
+meta:
+  title: "Dawei Huang · Generative modeling for protein design"
+  description: >-
+    Dawei Huang builds latent representation spaces and inference-time search
+    for generative models of interacting biomolecules. Tencent AI Lab,
+    Foundation Model for Science. M.S. Southern University of Science and Technology.
+  switch_to: "中文"
+  switch_hint: "Switch to Chinese"
+
+nav:
+  research: Research
+  publications: Publications
+  background: Background
+  contact: Contact
+
+hero:
+  name: Dawei Huang
+  name_native: 黄达威
+  eyebrow: AI for Science · Protein design
+  thesis: >-
+    When a model has to generate **several interacting entities at once**,
+    the representation space decides everything — what survives compression,
+    what can be generated jointly, and what you are able to search.
+    I design those spaces, and the search that runs inside them.
+  figure:
+    title: Residue contact map of a two-chain complex
+    caption: >-
+      Most generative methods hold the target fixed and model only the binder,
+      so the off-diagonal block is assumed rather than learned. I denoise the
+      whole complex jointly — that block is the work.
+    label_target: Target
+    label_binder: Binder
+    label_interface: Interface
+  actions:
+    - { text: "Email", href: "mailto:dawei_huang@163.com", icon: mail, primary: true }
+    - { text: "CV (EN)", href: "assets/cv/Dawei-Huang-CV-EN.pdf", icon: doc }
+    - { text: "CV (中文)", href: "assets/cv/Dawei-Huang-CV-ZH.pdf", icon: doc }
+    - { text: "GitHub", href: "https://github.com/H-Dw", icon: github }
+    # Fill in a url to make these appear. Leave empty and they stay hidden.
+    - { text: "Google Scholar", href: "", icon: scholar }
+    - { text: "ORCID", href: "", icon: orcid }
+    - { text: "LinkedIn", href: "", icon: linkedin }
+
+# The scannable summary. Keep it to five lines — it is the part a busy
+# reader actually finishes.
+ledger:
+  - key: First author
+    value: >-
+      *Co-denoising Binder Design in a Unified Complex Latent Space* —
+      NeurIPS 2026, under review
+  - key: Record
+    value: >-
+      8 papers (4 in Q1 journals) · 1 patent · 4 manuscripts under review in the 2026 cycle
+  - key: Competition
+    value: >-
+      AIntibody global antibody design challenge — **top 3**, as inference lead for IgGM
+  - key: Trained at
+    value: >-
+      Tencent AI Lab, Foundation Model for Science · SUSTech, Maofu Liao group
+  - key: Looking for
+    value: >-
+      PhD positions and industry research roles in generative modeling for science
+
+research:
+  eyebrow: Research
+  title: Four projects, one question
+  intro: >-
+    Real systems rarely ask a model for one object in isolation. They ask for
+    several objects that have to fit each other — protein chains across an
+    interface, agents sharing a scene, bodies in contact. Each project below
+    attacks a different part of the same problem: how domain evidence enters a
+    generative model, how a task-aligned signal is read back out of it, how a
+    space should be built when the entities are coupled, and how search over
+    that space improves from its own failures.
+  core_label: Core work
+  details_label: Method contributions
+  stages:
+    - id: prior
+      index: "01"
+      stage: Prior
+      stage_note: Getting evidence into the model
+      title: "ESM3-MD: dynamics-informed conformational sampling"
+      subtitle: Reshaping a proposal distribution with molecular dynamics
+      tags:
+        - { text: "Ongoing", kind: muted }
+        - { text: "Related work under review at NeurIPS 2026 · third author", kind: muted }
+      question: >-
+        Molecular dynamics covers the full conformational space but is expensive
+        and samples it slowly. Pretrained protein language models encode static
+        structure well and have no notion of a dynamic conformational
+        distribution. Neither route gives cheap access to alternative states.
+      insight: >-
+        The temporal information inside an MD trajectory can be compressed into
+        a per-residue conditional distribution and injected into the structure
+        module of a pretrained model through LoRA — activating a capability the
+        general model already latently has, instead of training a new one.
+      contributions:
+        - title: Co-evolutionary fragment corpus
+          text: >-
+            Built a corpus carrying co-evolutionary signal from homologous
+            sequence fragments and tuned the prompt by multi-objective
+            combinatorial optimization. Against the pretrained baseline, RMSD to
+            the alternative conformer dropped **10%** and intermediate-state
+            diversity rose **9%**.
+        - title: ESM3-MD fine-tuning framework
+          text: >-
+            Converted MD trajectories into residue-level probability targets and
+            fine-tuned the ESM3 structure module with LoRA, so sampling inherits
+            the dynamics rather than memorising frames. Conformational coverage
+            improved by roughly **22%**.
+      metrics:
+        - { value: "−10%", label: "RMSD to alt. conformer" }
+        - { value: "+9%", label: "Intermediate diversity" }
+        - { value: "+22%", label: "Conformational coverage" }
+
+    - id: signal
+      index: "02"
+      stage: Signal
+      stage_note: Reading a decision out of geometry
+      title: "FANGS: fragment-aware compatibility scoring"
+      subtitle: Zero-shot screening for fusion protein design
+      tags:
+        - { text: "Manuscript in preparation", kind: muted }
+        - { text: "Wet-lab validated", kind: accent }
+      question: >-
+        Design models can produce candidates faster than anyone can test them,
+        so screening is the real bottleneck. The confidence scores everyone
+        reaches for — ipTM, pTM — correlate weakly with actual function, and the
+        hit rate suffers for it.
+      insight: >-
+        A fusion protein works or fails on **fragment-level structural
+        compatibility** between its modules, not on a global energy optimum. Fix
+        the functional-state conformation first, then score compatibility as
+        similarity between fragment-level latent structure embeddings. Generator
+        and verifier share one model; nothing extra is trained.
+      contributions:
+        - title: Conformation control through a multimodal model
+          text: >-
+            Used ESM3 conditional generation to pin the functional conformation.
+            On the fusion protein test case the structural error fell **39%**
+            relative to the AlphaFold3 prediction.
+        - title: The FANGS score
+          text: >-
+            Defined compatibility as similarity between fragment-level latent
+            structure embeddings. Against global scoring, Spearman correlation
+            with the measured metric improved by **more than 0.5**.
+        - title: Antibody validation
+          text: >-
+            Affinity measurements tracked the score gradient across five
+            scaffolds spanning ~35–150 nM. The score selected frameworks with
+            better yield and better affinity in anti-TNFα and anti-snake-venom
+            nanobody design.
+      metrics:
+        - { value: "−39%", label: "RMSD vs. AlphaFold3" }
+        - { value: "+0.5", label: "Spearman vs. global score" }
+        - { value: "5/5", label: "Scaffolds ranked in order" }
+
+    - id: space
+      index: "03"
+      stage: Space
+      stage_note: Building the space the entities live in
+      core: true
+      title: Co-denoising binder design in a unified complex latent space
+      subtitle: Joint generation and latent-space search for interacting chains
+      tags:
+        - { text: "NeurIPS 2026 · under review", kind: accent }
+        - { text: "First author", kind: accent }
+      question: >-
+        Mainstream binder design encodes target and binder independently, so
+        interface geometry and the coupling between the two chains are never
+        modelled together. Induced fit disappears, and the binders that come out
+        pack loosely against the target with poor contact efficiency.
+      insight: >-
+        Project the entire target–binder complex into a single latent space and
+        denoise the two chains **together**. Interface geometric coupling then
+        emerges on its own, with no repeated decoding and searching in
+        coordinate space — which buys both cheap inference and physically
+        complementary structures.
+      contributions:
+        - title: All-atom complex representation
+          text: >-
+            An interaction-aware all-atom autoencoder whose bottleneck holds
+            interface geometry and target–binder relational topology at the same
+            time. All-atom reconstruction reaches **DockQ > 0.90** on the CASP
+            complex test set, well ahead of the baselines, while monomer
+            performance holds.
+        - title: Latent co-denoising
+          text: >-
+            Training defines a probability path over the joint target–binder
+            state instead of conditioning on a frozen target, so the target's
+            local conformation is free to adapt to the binder. Induced fit
+            becomes something the model represents rather than something it
+            ignores.
+        - title: Inference-time search inside the latent space
+          text: >-
+            Scoring, branching, pruning and rollback all operate directly on
+            intermediate latent states, so no candidate has to be decoded to
+            coordinates to be judged. Inference runs at **28.7%** of the time and
+            **11.6%** of the memory of Complexa, and designability improves
+            **20.8%** over the original.
+        - title: What the binders look like
+          text: >-
+            Generated binders beat the compared methods on contact efficiency
+            and local packing density at the binding side — geometrically
+            plausible, competitive interface quality, and good enough as seeds
+            for downstream optimisation.
+      metrics:
+        - { value: "> 0.90", label: "All-atom DockQ, CASP complexes" }
+        - { value: "28.7%", label: "Inference time vs. Complexa" }
+        - { value: "11.6%", label: "GPU memory vs. Complexa" }
+        - { value: "+20.8%", label: "Designability" }
+
+    - id: loop
+      index: "04"
+      stage: Loop
+      stage_note: Letting the search learn from itself
+      title: A self-improvement harness for protein binder design
+      subtitle: Verifier-guided sequential decisions under a fixed compute budget
+      tags:
+        - { text: "System · closed loop", kind: muted }
+      question: >-
+        Binder design usually runs as a fixed generate-then-filter pipeline.
+        Binder length, hotspots and thresholds are set from experience and never
+        revised, no matter what the intermediate results or the failure modes
+        say. On hard targets the budget goes into search directions that were
+        already known to be dead.
+      insight: >-
+        Treat binder design as a **verifier-guided sequential decision problem**.
+        A controller reads the target structure and the verified history of its
+        own trajectories, then rewrites the next round's generation
+        configuration and branch decisions — optimising the whole process under
+        a fixed budget instead of filtering finished candidates once.
+      contributions:
+        - title: Adaptive inference policy
+          text: >-
+            Generation configuration becomes the decision variable: binder
+            length, hotspot conditioning, local templates, filter thresholds and
+            sampling budget are all updated from each round's structural
+            feedback.
+        - title: Verifier-guided search control
+          text: >-
+            A replayable closed-loop harness uses a composite reward to choose
+            between Advance, Branch, Rollback and Stop, so a degrading branch
+            stops consuming compute instead of running to completion.
+        - title: Structured experience memory
+          text: >-
+            High-quality local interfaces are stored as a retrievable
+            fragment-template memory and reused as generation constraints or
+            configuration priors, which lets locally useful but globally
+            unstable structure survive across rounds. Over 8 rounds, best ipTM
+            rose **11%** on SC2RBD and **12%** on PD-L1, with refolding successes
+            up **7×** and **2.82×**.
+      metrics:
+        - { value: "+11% / +12%", label: "Best ipTM, SC2RBD / PD-L1" }
+        - { value: "7× / 2.82×", label: "Refolding successes" }
+        - { value: "8", label: "Closed-loop rounds" }
+
+    - id: evosseek
+      index: "04"
+      stage: Loop
+      stage_note: Letting the search learn from itself
+      title: "EvoSEEK: evidence-governed multi-agent directed evolution"
+      subtitle: Making external knowledge and wet-lab memory auditable
+      tags:
+        - { text: "System · multi-agent", kind: muted }
+      question: >-
+        Directed evolution searches an exponential sequence space from few
+        samples, under strong epistasis and a hard budget. Existing agent
+        approaches keep external literature and cross-round experimental memory
+        in separate silos, which produces conflicting evidence and the same
+        failure attempted twice.
+      insight: >-
+        Reframe it as an **evidence-governed sequential decision problem**. A
+        frozen scientific-knowledge graph and an experimental-memory graph turn
+        literature and feedback into traceable, reusable decision priors, and a
+        hierarchical multi-agent system proposes, reviews and revises falsifiable
+        hypotheses across rounds.
+      contributions:
+        - title: Dual-graph evidence governance
+          text: >-
+            Deep Research and RAG output is frozen into a citable scientific
+            knowledge graph; an experimental-memory graph ties each hypothesis to
+            its observation. An EvidencePack gates what may be used by source,
+            recency and selection eligibility.
+        - title: Hierarchical reasoning and a decision loop
+          text: >-
+            Physicochemical, conservation and structural Scientist–Critic pairs
+            run under a fail-closed contract. Agent-UQ balances hypothesis
+            targeting, exploration and controls, and a ReThink step writes dry-
+            and wet-lab outcomes back into cross-round memory.
+        - title: Does the memory actually help
+          text: >-
+            In a same-fold, leak-free ablation, experimental memory beat the
+            agent-only setting on **3 of 3 folds** for both final best-seen
+            (+0.940 ± 0.524) and AULC (+0.500 ± 0.151). Three-channel evidence
+            conditioning ranked first among 8 strategies on final best-seen
+            (5.657 ± 0.534) and was the only strategy to improve three rounds in
+            a row.
+      metrics:
+        - { value: "3 / 3", label: "Folds improved by memory" }
+        - { value: "+0.940", label: "Final best-seen vs. agent-only" }
+        - { value: "1 of 8", label: "Rank among evidence strategies" }
+
+publications:
+  eyebrow: Publications
+  title: Papers, preprints and patents
+  note: >-
+    Manuscripts under review are listed with their venue and my author position,
+    and are labelled as such. Nothing here is counted twice.
+  groups:
+    - label: Under review
+      kind: review
+      items:
+        - authors: "**Dawei Huang** et al."
+          title: Protein design via latent diffusion
+          venue: NeurIPS 2026
+          role: First author
+          status: Under review
+        - authors: "Kaiwen Cheng, … , **Dawei Huang** et al."
+          title: Dynamic modeling through collective supervision
+          venue: NeurIPS 2026
+          role: Third author
+          status: Under review
+        - authors: "Jun Wu, … , **Dawei Huang** et al."
+          title: Cross-task screening using internal representations
+          venue: NeurIPS 2026
+          role: Fourth author
+          status: Under review
+        - authors: "Zhu Si, … , **Dawei Huang** et al."
+          title: Flexible protein complex modeling
+          venue: Nature Microbiology
+          role: Fourth author
+          status: Under review
+    - label: Published and accepted
+      kind: published
+      items:
+        - authors: "Tianxu Lv, … , **Dawei Huang** et al."
+          title: A foundation model for T-cell receptors
+          venue: Nature Communications, 2026
+          status: Accepted in principle
+        - authors: "Jiaqi Su, Fu V. Song, **Dawei Huang**, Maofu Liao"
+          title: Constructing and characterizing a trillion-scale combinatorial chemical library
+          venue: Journal of Cheminformatics, 2026 · Q1
+          role: Third author
+          doi: 10.1186/s13321-026-01185-7
+        - authors: "**Dawei Huang**, Guixian Zhong, Shiyang Zhang, Kerui Jiang, Chen Wang, Jian Wu, Bo Wang"
+          title: >-
+            Trichome-specific analysis and WGCNA reveal a potential regulation
+            mechanism of artemisinin biosynthesis in *Artemisia annua*
+          venue: International Journal of Molecular Sciences, 2023 · Q1
+          role: First author
+          doi: 10.3390/ijms24108473
+        - authors: "Shiyang Zhang, Huiting Xu, Guixian Zhong, **Dawei Huang**, Kerui Jiang, Jian Wu, Bo Wang"
+          title: >-
+            Promiscuous *Artemisia annua* GPI-anchored lipid transfer protein 1
+            (AaLTPG1) promotes terpenoid accumulation in planta
+          venue: Industrial Crops and Products, 2023 · Q1
+          role: Fourth author
+          doi: 10.1016/j.indcrop.2023.117684
+    - label: Patent
+      kind: patent
+      items:
+        - authors: "Second inventor"
+          title: Separation device for artemisinin and polymethoxyflavones
+          venue: CN202220443530.3
+
+background:
+  eyebrow: Background
+  title: Where the work was done
+  positions:
+    - org: Tencent AI Lab
+      unit: Foundation Model for Science group
+      role: Machine learning research intern
+      period: Sep 2025 – Jul 2026
+      logo_text: Tencent
+      logo_color: "#0052D9"
+      people: "Supervisor: Jianhua Yao (Tencent Distinguished Scientist) · Mentor: Fandi Wu"
+      bullets:
+        - >-
+          Built **PLDesign**, a protein structure design model whose generated
+          structures exceed the comparable Proteina-Complexa (NVIDIA)
+          architecture on designability in our evaluation.
+        - >-
+          Built the **WorkBuddy MCP module** of Tencent's agent system for
+          scientific work.
+        - >-
+          Led inference for the **IgGM** antibody design model, which placed
+          **top 3** in the AIntibody global antibody design challenge.
+    - org: Southern University of Science and Technology
+      unit: Maofu Liao group (Chair Professor) · Department of Biology
+      role: M.S., AI for Biology
+      period: Sep 2023 – Jul 2026
+      logo_image: assets/sustech.png
+      bullets:
+        - >-
+          Thesis work on generative modelling and inference-time search for
+          protein structure — the four projects above.
+    - org: South China Agricultural University
+      unit: Dingying Innovation Class · dual degree
+      role: B.Eng. Software Engineering + B.Sc. Agronomy
+      period: Sep 2019 – Jun 2023
+      logo_text: SCAU
+      logo_color: "#1B7A6B"
+      bullets:
+        - >-
+          GPA 4.21 / 5.00 · ranked **3rd** in the programme, earning a
+          recommended postgraduate place.
+
+  toolkit:
+    label: Toolkit
+    groups:
+      - label: Methods
+        items:
+          - Latent diffusion & flow matching
+          - Transformer / DiT
+          - Autoencoder representation learning
+          - Inference-time scaling & search
+          - LoRA adaptation
+          - Verifier-guided decision loops
+          - Multi-agent systems & MCP
+      - label: Stack
+        items:
+          - { text: Python, icon: python }
+          - { text: PyTorch, icon: pytorch }
+          - { text: ESM3, icon: "" }
+          - { text: AlphaFold3, icon: "" }
+          - { text: Molecular dynamics, icon: "" }
+          - { text: Linux, icon: linux }
+          - { text: Git, icon: git }
+          - { text: LaTeX, icon: latex }
+
+  awards:
+    label: Awards
+    items:
+      - { text: "Outstanding Poster Award", org: "South China Structural Biology Conference" }
+      - { text: "Outstanding Graduate Student 2026 · Top-10 Graduate of the School", org: "SUSTech" }
+      - { text: "Special-Class Scholarship (highest tier)", org: "SUSTech" }
+      - { text: "Outstanding Undergraduate Graduate, Class of 2023", org: "South China Agricultural University" }
+
+  languages:
+    label: Languages
+    text: >-
+      Chinese (native) · English (CET-6, IELTS 6.0) — reads and writes research
+      papers in English.
+
+contact:
+  eyebrow: Contact
+  title: Get in touch
+  text: >-
+    I am looking for PhD positions and industry research roles in generative
+    modelling for science. If any of the work above is close to what your group
+    is doing, email is the fastest way to reach me — I read everything.
+  email: dawei_huang@163.com
+  footer_note: >-
+    Built from a fork of Yixin Huang's personal homepage template, itself based
+    on Sen Li's academic template. Rebuilt in 2026.
