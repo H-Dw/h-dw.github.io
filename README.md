@@ -1,10 +1,10 @@
-# H-Dw
+# h-dw.github.io
 
 Personal research homepage for **Dawei Huang (黄达威)** — latent-based
 generation and agent-system governance.
 
 Once GitHub Pages is enabled, the site is available at
-**https://h-dw.github.io/H-Dw/**.
+**https://h-dw.github.io/**.
 
 ---
 
@@ -96,22 +96,21 @@ python -m http.server 8000
 
 ## Publishing with GitHub Pages
 
-This repository is configured as a GitHub Pages **project site**. It uses only
-relative asset paths, so it works at `/H-Dw/` without a build step or base-path
-rewrite. The included `.nojekyll` file keeps GitHub Pages from applying Jekyll
-processing to the static assets.
+This repository is configured as the GitHub Pages **user site** for `H-Dw`.
+Its repository name matches `<username>.github.io`, so GitHub publishes it at
+the account root domain without a base-path rewrite. The site uses relative
+asset paths and needs no build step. The included `.nojekyll` file keeps GitHub
+Pages from applying Jekyll processing to the static assets.
 
 After the first push, enable Pages under **Settings → Pages → Build and
 deployment → Deploy from a branch → `main` / `(root)`**. GitHub will publish
 the site at:
 
 ```
-https://h-dw.github.io/H-Dw/
+https://h-dw.github.io/
 ```
 
-If the repository is later renamed to `H-Dw.github.io`, update the canonical
-and Open Graph URLs in `index.html` to the root-domain address. For normal
-content updates, commit and push:
+For normal content updates, commit and push:
 
 ```bash
 git add -A
