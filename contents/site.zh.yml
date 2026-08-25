@@ -5,15 +5,15 @@
 # ---------------------------------------------------------------------------
 
 meta:
-  title: "黄达威 · 隐空间生成式结构设计与自进化智能体"
+  title: "黄达威 · 隐空间生成与智能体系统治理"
   description: >-
-    黄达威，研究面向结构生成的隐空间表征，以及能从自身结果中持续改进的搜索闭环。
-    腾讯 AI Lab 科学大模型组。
+    黄达威，研究面向蛋白质结构生成的隐空间表征，以及执行状态与知识状态的智能体系统治理，曾在腾讯科学大模型组开展研究实习。
   switch_to: "EN"
   switch_hint: "切换到英文"
 
 nav:
   research: 研究
+  projects: Agent 产品
   publications: 成果
   background: 经历
   contact: 联系
@@ -21,176 +21,122 @@ nav:
 hero:
   name: 黄达威
   name_native: Dawei Huang
-  eyebrow: 隐空间生成式结构设计 · 自进化智能体
+  eyebrow: 隐空间生成 · 智能体系统治理
   thesis: >-
-    我做两件事。一是生成模型用来产出**结构**的那个隐空间——
-    那些必须彼此契合、而非各自独立存在的几何对象，应该被如何表征；
-    二是**运行在这个空间之上的搜索**，它应该从自己的结果里变好，
-    而不是每次都重放同一条固定流水线。蛋白质是我验证两者的地方，因为在那里答案可以被检验。
+    在我看来，模型理解世界有内外两条相通的路径，这让我想到《中庸》所说的“致广大而尽精微”。向内，表征收束复杂现象，直至物质交互的规律浮现。向外，不同模型各见一隅，系统治理让这些视角相互检验、校正并协同工作。**知识驱动的表征贯通二者**，使压缩取舍有据，也让多样视角得以共语。模型由此见微知著，并由众多视角把握全貌。
   portrait_alt: 黄达威
   actions:
-    - { text: "邮件", href: "mailto:dawei_huang@163.com", icon: mail, primary: true }
-    - { text: "简历（中文）", href: "assets/cv/Dawei-Huang-CV-ZH.pdf", icon: doc }
-    - { text: "CV (EN)", href: "assets/cv/Dawei-Huang-CV-EN.pdf", icon: doc }
+    # 邮件与简历下载暂时停用。需要恢复时取消下面三行的注释。
+    # - { text: "邮件", href: "mailto:dawei_huang@163.com", icon: mail, primary: true }
+    # - { text: "简历（中文）", href: "assets/cv/Dawei-Huang-CV-ZH.pdf", icon: doc }
+    # - { text: "CV (EN)", href: "assets/cv/Dawei-Huang-CV-EN.pdf", icon: doc }
     - { text: "GitHub", href: "https://github.com/H-Dw", icon: github }
     # 填上链接这几项才会显示，留空则自动隐藏。
     - { text: "Google Scholar", href: "", icon: scholar }
     - { text: "ORCID", href: "", icon: orcid }
     - { text: "LinkedIn", href: "", icon: linkedin }
 
-# 首屏下方的过程条：图由 js/latent-search.js 绘制，下面三个标签对应它的三个区段。
-process:
-  eyebrow: 闭环
-  stages:
-    - label: 隐空间先验
-      note: 一个足够紧凑到可以生成、又足够规整到可以搜索的空间。
-    - label: Verifier-guided 搜索
-      note: 打分、分支、剪枝、回滚都在空间内完成，无需先解码。
-    - label: 结构
-      note: 经得起检验的几何。
-  caption: >-
-    生成器提出候选，验证器给出评分，闭环决定下一步往哪看。
-    我工作的两半都在这张图里——候选被采样自的那个空间，以及决定算力怎么花的那个策略。
-
-ledger:
-  - key: 一作
-    value: >-
-      *统一复合体隐空间中的协同去噪* —— NeurIPS 2026，审稿中
-  - key: 成果
-    value: >-
-      论文 8 篇（Q1 4 篇）· 专利 1 项 · 2026 年度在审稿件 4 篇
-  - key: 关键指标
-    value: >-
-      推理耗时与显存为对比基线的 **28.7%** 和 **11.6%**，可设计性 **+20.8%**
-  - key: 训练背景
-    value: >-
-      腾讯 AI Lab 科学大模型组 · 南方科技大学廖茂富课题组
-  - key: 求职方向
-    value: >-
-      生成建模与智能体搜索方向的博士岗位与工业界研究岗
-
 research:
   eyebrow: 研究
   title: 两条主线，一个闭环
   intro: >-
-    第一条主线问的是：当被生成的对象是**结构**——那些互相约束的几何体，
-    每个局部都合理并不等于整体合理——表征应该长什么样。
-    第二条问的是：围绕这个生成器的流程，应该拿自己的历史做什么，
-    而不是对每个问题都执行同一串固定调用。
-    两条线在推理阶段交汇，而事实证明大部分收益就在那里。
+    在我的研究中，这一视角形成两条相互衔接的技术路径。**隐空间生成**研究表征如何保留界面几何、耦合关系与构象分布，以及这些表征如何支持生成、评估与推理时搜索。**智能体系统治理**研究生成与实验工作流如何在迭代决策中协调模型、工具、证据与记忆，使执行过程可验证、状态转换可控、科学推理可追溯。表征界定每个模型可利用的信息，治理则将这些局部视角组织为生成、验证、学习与修正的闭环。
+  animation:
+    title: 表征驱动生成与智能体系统治理
+    aria_label: >-
+      两名小型法师机器人挥动一体化魔法棒，将发光流引入高斯噪声，生成 Rop 蛋白四螺旋同源二聚体的三维卡通结构，随后再溶解回噪声。
   core_label: 核心工作
   details_label: 方法贡献
   tracks:
     - id: latent
       numeral: I
-      label: 隐空间生成式结构设计
+      label: 隐空间生成
       note: >-
-        构建模型工作于其中的那个空间——什么必须挺过 bottleneck、
-        彼此耦合的实体如何被联合表征，以及产出的空间能不能在不解码的前提下被搜索。
+        可搜索的隐空间为生成、评估与推理时搜索组织结构信息。
       stages:
         - id: space
           core: true
-          title: 统一复合体隐空间中的协同去噪
-          subtitle: 相互作用实体的联合生成与隐空间搜索
+          title: 统一复合体隐空间协同去噪蛋白质结合物设计
+          subtitle: 统一表征界面几何与靶标–结合蛋白耦合关系
           tags:
             - { text: "NeurIPS 2026 · 审稿中", kind: accent }
             - { text: "第一作者", kind: accent }
           question: >-
-            当模型必须产出两个必须彼此契合的对象时，通行做法是冻结其中一个、以它为条件生成另一个。
-            于是两者之间的界面变成了一个假设，而不是模型真正表征的东西，
-            共享的不确定性与协同形变也就无处安放。
-            在结合蛋白设计中，这体现为堆积松散、接触效率低。
+            现有结合蛋白设计方法通常独立编码靶标与结合蛋白，因而难以联合建模界面几何与靶标–结合蛋白耦合。诱导契合效应的缺失容易导致生成结构的界面堆积松散、接触效率偏低。
           insight: >-
-            把整对对象投影到**单一隐空间**，让两侧一起去噪。
-            界面处的几何耦合会自然涌现，无需在坐标空间反复解码与搜索——
-            同时换来低廉的推理成本和物理上真正嵌合的产出。
+            将靶标–结合蛋白复合体整体投影至**统一隐空间**并协同去噪，在保留界面耦合的同时避免昂贵的坐标空间解码。
           contributions:
-            - title: 一种保住关系的表征
+            - title: 全原子复合体表征
               text: >-
-                互作感知的全原子自编码器，其 bottleneck 同时保留单个实体的几何与实体间的关系拓扑。
-                在 CASP 复合物测试集上重建达到 **DockQ > 0.90**，显著优于基线，且单体性能不退化。
-                隐空间距离与笛卡尔空间的结构差异高度相关，且在不同噪声水平下保持稳定——
-                这正是该空间可被搜索的前提。
-            - title: 联合去噪，而非条件生成
+                设计互作感知的全原子自编码器，使表征瓶颈同时保留界面几何与靶标–结合蛋白关系拓扑。在 CASP 复合物测试集上，全原子重建达到 **DockQ > 0.90**，显著优于基线。
+            - title: 隐空间协同去噪
               text: >-
-                训练阶段在**联合状态**上定义概率路径，而不是以冻结的伙伴为条件，
-                因而每一侧都可以自适应于另一侧。
-                诱导契合从"被忽略的东西"变成"被显式表征的东西"。
-            - title: 在空间内部搜索
+                靶标与结合蛋白在隐空间同步去噪，使靶标局部构象能够适应结合蛋白，并显式建模诱导契合效应。
+            - title: 隐空间推理阶段搜索
               text: >-
-                打分、分支、剪枝、回滚全部直接作用于中间隐状态，任何候选都不必解码到坐标空间才能被评判。
-                推理耗时与显存开销仅为 Complexa 的 **28.7%** 和 **11.6%**，可设计性提升 **20.8%**。
-            - title: 产出是什么样的
+                直接对推理阶段的中间隐状态评分与过滤，避免坐标空间解码。推理耗时和显存开销仅为 Complexa 的 **28.7%** 和 **11.6%**，生成可设计性相较原版本提升 **20.8%**。
+            - title: 结合蛋白设计测试验证
               text: >-
-                在界面处的接触效率和局部堆积密度上均优于所对比的方法：
-                几何形状物理合理、界面质量具有竞争力，足以作为下游优化的优质种子。
+                生成的结合蛋白在接触效率和结合侧局部堆积密度上均优于主流方法，具有物理上合理的几何形状和有竞争力的复合体界面质量，可作为下游优化的候选起点。
           metrics:
             - { value: "> 0.90", label: "CASP 复合物全原子 DockQ" }
-            - { value: "28.7%", label: "推理耗时（对比基线）" }
-            - { value: "11.6%", label: "显存开销（对比基线）" }
-            - { value: "+20.8%", label: "可设计性" }
+            - { value: "28.7%", label: "相对基线推理耗时" }
+            - { value: "11.6%", label: "相对基线显存开销" }
+            - { value: "+20.8%", label: "可设计性相对原版本提升" }
 
         - id: signal
-          title: "FANGS：从表征几何里读出决策"
-          subtitle: 用隐空间距离作为验证器的零样本排序
+          title: "FANGS：面向融合蛋白设计的片段感知零样本排序"
+          subtitle: 以局部结构兼容度连接候选生成与实验筛选
           tags:
             - { text: "论文撰写中", kind: muted }
             - { text: "已获湿实验验证", kind: accent }
           question: >-
-            生成模型产出候选的速度远快于任何人验证它们的速度，排序才是瓶颈。
-            而大家惯用的置信度分数训练自另一个目标函数，
-            与"这个设计到底能不能用"的相关性很弱。
+            生成模型可以快速提出大量融合蛋白候选，有限的实验预算要求在验证前准确排序。ipTM、pTM 等全局置信度与功能读数相关性有限，难以稳定识别高价值候选。
           insight: >-
-            如果隐空间建得好，**其中的距离本身就是任务信号**。
-            先把功能态构象固定住，再用片段级隐空间结构嵌入的相似度度量兼容度。
-            生成器与验证器共用同一个模型，不额外训练任何分类器。
+            FANGS 先固定功能态构象，再用片段级结构嵌入刻画模块间的**局部兼容度**。隐空间相似度由此成为零样本排序信号，直接服务于实验优先级决策。
           contributions:
-            - title: 先控制状态，再打分
+            - title: 多模态功能态控制
               text: >-
-                用多模态模型的条件生成先锁定功能构象，使比较发生在同类状态之间。
-                在测试案例中，结构误差相比 AlphaFold3 预测降低 **39%**。
-            - title: 片段级兼容度
+                利用 ESM3 条件生成固定功能状态构象。在融合蛋白测试案例中，ESM3-Template 的结构误差（RMSD）相较 AF3 降低 **39%**。
+            - title: 片段级兼容度排序
               text: >-
-                兼容度被定义为局部性质，而非全局能量最优。
-                相比全局评分，与实测量的 Spearman 相关系数提升 **超过 0.5**。
-            - title: 它在实验上站住了
+                以片段级隐空间结构嵌入的相似度构建兼容度评分。相较全局评分，FANGS 与实验读数的 Spearman 相关系数提高 **0.5 以上**。
+            - title: 两项实验案例
               text: >-
-                在亲和力约 35–150 nM 的五个骨架上，实测值与打分顺序一致，
-                而 ipTM 与 pTM 在这个区间几乎没有区分度。
-                同一打分在两个独立的设计任务中都筛出了产量更优、亲和力更优的框架。
+                将 FANGS 排序用于两个独立抗体工程任务，并以表达与亲和力实验验证入选候选。
           metrics:
             - { value: "−39%", label: "结构误差（对比 AlphaFold3）" }
-            - { value: "+0.5", label: "Spearman（对比全局评分）" }
-            - { value: "5/5", label: "骨架排序与实测一致" }
+            - { value: "+0.5", label: "Spearman 相关系数增量" }
+          case_results:
+            label: 实验案例
+            summary: 2 项独立任务 · 均获得成功候选
+            items:
+              - target: Anti-TNF-α Nb
+                task: Nb 人源化
+                outcome: 成功获得人源化 Nb
+                evidence: 可通过筛选现有公开 scaffold 数据库，获得结合亲和力与对应 WT 相当甚至更强的 scaffold
+              - target: Anti-snake-venom Ab
+                task: Ab → humanized Nb 转换
+                outcome: 成功获得 humanized Nb
+                evidence: 可通过筛选现有公开 scaffold 数据库，获得结合亲和力与对应 WT 相当甚至更强的 scaffold
 
         - id: prior
-          title: "ESM3-MD：把先验注入提议分布"
-          subtitle: 让预训练模型吸收模拟动力学中的监督信号
+          title: "ESM3-MD：动力学信息增强的蛋白质动态构象采样"
+          subtitle: 将分子动力学分布高效注入预训练结构模块
           tags:
             - { text: "进行中", kind: muted }
             - { text: "同方向工作在投 NeurIPS 2026 · 三作", kind: muted }
           question: >-
-            预训练结构模型能自信地采出一个模态，却对它周围的分布毫无概念；
-            模拟能覆盖那个分布，但昂贵到无法反复查询。
-            两条路都拿不到系统真实访问过的那些状态。
+            分子动力学模拟能够覆盖广泛的构象空间，但计算开销高、采样效率有限。预训练结构模型擅长静态结构建模，却缺乏对动态构象分布的刻画，因而难以低成本采样替代构象。
           insight: >-
-            轨迹中的时间演化信息可以被压缩成**逐位点的条件概率分布**，
-            再通过 LoRA 注入结构模块——这是在"激活"通用模型本就潜在具备的能力，
-            而不是重新训练一个。表征就是领域证据进入生成器的那个接口。
+            将分子动力学轨迹中的时间演化信息编码为**条件概率分布**，再通过 LoRA 高效注入预训练模型的结构模块，使模型能够生成动态构象。
           contributions:
-            - title: 把证据当作分布，而不是标签
+            - title: 共进化片段语料构建
               text: >-
-                每一帧被编码为离散的逐位点表征，再聚合成目标分布，
-                因而局部状态之间的相对概率被保留下来，而不是塌缩成一个答案。
-                两条路径把提议分布推向它：KL 微调与推理时 logit 偏置。
-            - title: 共进化语料与 Prompt 搜索
+                利用同源序列片段构建包含共进化信息的语料，并通过多目标组合优化策略优化提示。相较预训练模型，测试蛋白与替代构象的结构差异（RMSD）降低 **10%**，采样中间态多样性提升 **9%**。
+            - title: ESM3-MD 微调框架
               text: >-
-                由同源片段构建的语料携带共进化信号，Prompt 以多目标组合优化调优。
-                相比预训练基线，与异构态的距离降低 **10%**，中间态多样性提升 **9%**。
-            - title: 结果
-              text: >-
-                微调后的模型在具有明显构象变化的蛋白上同时采到了两端状态，
-                探索的空间更广，构象覆盖率提升约 **22%**。
+                将分子动力学轨迹的时间信息转换为概率分布，并通过 LoRA 对 ESM3 结构模块进行参数高效微调。相较传统方法，构象覆盖率提升约 **22%**。
           metrics:
             - { value: "−10%", label: "与异构态的距离" }
             - { value: "+9%", label: "中间态多样性" }
@@ -198,108 +144,189 @@ research:
 
     - id: agents
       numeral: II
-      label: 自进化智能体
+      label: 智能体系统治理
       note: >-
-        让围绕生成器的流程学会适应——读取经过验证的历史、
-        改写下一轮的策略，并把事后证明值得留下的经验保存下来。
+        BinderLoop 治理执行状态，使智能体调度、验证与回滚保持可控；EvoSEEK 治理知识状态，使科学证据、实验记忆与假设形成过程保持可追溯。
       stages:
         - id: harness
-          title: 面向结构生成的自进化 Harness
-          subtitle: 固定算力预算下的 verifier-guided 序列决策
+          title: "BinderLoop：针对蛋白质结合物设计的自进化智能体系统"
+          subtitle: 固定计算预算下的验证器引导生成配置优化
           tags:
             - { text: "系统 · 闭环", kind: muted }
           question: >-
-            大多数生成流水线是固定的：采样、过滤、汇报。
-            真正起作用的那些参数靠经验设定，之后无论中间结果和失败模式说了什么都不会被修正。
-            在困难实例上，算力就这样持续投进已知的死路。
+            现有蛋白质结合物设计通常采用固定的生成–筛选流程。结合蛋白长度、热点残基、过滤阈值、采样预算和局部结构模板等策略变量多由经验设定，难以根据中间质量与失败模式动态更新，因而在困难靶标上浪费计算预算。
           insight: >-
-            把生成当作一个 **verifier-guided 序列决策问题**。
-            控制器读取当前实例与自身历史轨迹的验证结果，改写下一轮的配置与分支决策——
-            在固定预算下优化整个过程，而不是对完整候选做一次性筛选。
+            将蛋白质结合物设计建模为**验证器引导的生成配置序列优化问题**。控制器依据当前靶标结构与历史生成轨迹的验证结果，在固定计算预算下持续更新输入约束、采样预算和分支回滚决策。
           contributions:
-            - title: 把配置本身变成决策变量
+            - title: 自适应推理策略
               text: >-
-                长度、条件化目标、局部模板、过滤阈值、采样预算，
-                全部根据每轮反馈更新，而不是在第一次调用之前就固定下来。
-            - title: 前进、分支、回滚、停止
+                结合蛋白长度、条件化目标、局部模板、过滤阈值和采样预算均根据每轮结构反馈更新。
+            - title: 验证器引导的搜索控制
               text: >-
-                可回放的闭环 Harness 用复合 reward 在四个动作之间做选择，
-                让质量退化的分支及时停止消耗算力，而不是跑完才被丢掉。
-                在其中一个靶点上，正是回滚在中段失序之后把系统拉回了有效路径。
-            - title: 让经验活过它所在的那一轮
+                构建可回放的闭环 Harness，使用复合奖励函数管理 Advance、Branch、Rollback 和 Stop 决策，避免在质量退化的搜索分支上持续消耗计算预算。
+            - title: 片段模板记忆
               text: >-
-                高质量的局部界面被存成可检索的片段模板，
-                在后续轮次作为生成约束或配置先验复用，
-                使"局部有效但全局不稳定"的结构不被丢弃。
-                8 轮之后，两个靶点的 best ipTM 分别提升 **11%** 和 **12%**，
-                Refolding 成功数提升 **7 倍**和 **2.82 倍**，且两者是沿不同的配置路径收敛的。
+                将高质量局部界面转化为可检索的片段模板记忆，作为后续轮次的生成约束或配置先验，使局部有效但全局评分不稳定的结构信息能够跨轮复用。经过 8 轮迭代，SC2RBD 和 PD-L1 的最优 ipTM 分别提升 **11%** 和 **12%**，成功重折叠数量分别提升 **7 倍**和 **2.82 倍**。
           metrics:
-            - { value: "+11% / +12%", label: "两个靶点的 best ipTM" }
-            - { value: "7× / 2.82×", label: "Refolding 成功数" }
+            - { value: "+11% / +12%", label: "两个靶点的最优 ipTM" }
+            - { value: "7× / 2.82×", label: "成功重折叠数量" }
             - { value: "8", label: "闭环迭代轮数" }
 
         - id: evoseek
-          title: "EvoSEEK：证据治理型多智能体搜索"
-          subtitle: 让外部知识与实验记忆变得可追溯、可复用
+          title: "EvoSEEK：证据治理型多智能体蛋白定向进化"
+          subtitle: 科学知识–实验记忆双图谱驱动的跨轮决策
           tags:
             - { text: "系统 · 多智能体", kind: muted }
           question: >-
-            在少样本、强交互效应和硬预算下搜索指数级空间，
-            本该是 LLM 智能体发挥作用的地方。
-            但它们把外部文献和自己的跨轮记忆放在两个孤岛里，
-            结果是证据互相冲突，同一个失败被重复尝试两次。
+            定向进化需要在少样本、强上位性和有限实验预算下搜索指数级序列空间。现有方法割裂外部知识与跨轮实验记忆，容易造成证据冲突和重复失败。
           insight: >-
-            把它重构为**证据治理型序列决策问题**。
-            冻结的知识图谱与实验记忆图谱把文献与反馈沉淀为可追溯、可复用的决策先验，
-            再由分层 Multi-Agent 跨轮生成、审查并修订可证伪的假设。
+            将任务重构为**证据治理的序列决策问题**。科学知识–实验记忆双图谱把外部知识与实验反馈沉淀为可追溯、可复用的决策先验，再由分层多智能体生成、审查并跨轮修订可证伪假设。
           contributions:
             - title: 双图谱证据治理
               text: >-
-                Deep Research / RAG 的产出被冻结为可引用的知识图谱，
-                记忆图谱把每个假设与它的观察绑定；
-                EvidencePack 按来源、时效和选择资格对可用证据实施门控。
-            - title: fail-closed 合同下的分层推理
+                将外部科研证据固化为可追溯的科学知识 KG，并以实验记忆 KG 关联假设与观察。EvidencePack 按来源、时效和选择资格实施证据门控。
+            - title: 分层推理与决策闭环
               text: >-
-                三组 Scientist–Critic 从不同前提出发互相质证；
-                Agent-UQ 在假设靶向、探索与对照之间做平衡；
-                ReThink 环节把结果写回跨轮记忆。
-            - title: 记忆到底有没有用
+                在 fail-closed 合同下组织理化性质、序列保守性和结构特征三个 Scientist/Critic 通道。Agent-UQ 依据不确定性平衡假设靶向、探索与对照，ReThink 则将验证结果转化为跨轮反思与记忆。
+            - title: 对照与留出集验证
               text: >-
-                同折无泄漏消融中，实验记忆相较 Agent-only 在 **3/3 folds** 上同时提升
-                final best-seen（+0.940 ± 0.524）与 AULC（+0.500 ± 0.151）；
-                三通道证据条件的 final best-seen 在 8 种策略中居首（5.657 ± 0.534），
-                且是唯一连续三轮持续提升的策略。
+                KG memory 的最终 best-seen score 相较 Agent-only 提升 **21%**（Agent-only 相较 baseline 提升 **9%**）；active learning 使第 3 轮 batch mean 相较匹配的 KG-only 设置提升 **63%**。在理化性质、序列保守性与结构特征三证据通道的 KG 运行中，最终 best-seen score 相较初始 best 提升 **39%**。相较匹配的非 RAG 设置，RAG 的留出集 Spearman 提升 **14%**。
           metrics:
-            - { value: "3 / 3", label: "记忆带来提升的折数" }
-            - { value: "+0.940", label: "final best-seen（对比 Agent-only）" }
-            - { value: "8 选 1", label: "证据策略中排名第一" }
+            - { value: "+21%", label: "KG memory · 最终 best-seen 相较 Agent-only（Agent-only 相较 baseline：+9%）" }
+            - { value: "+63%", label: "Active learning · 第 3 轮 batch mean 相较 KG-only" }
+            - { value: "+39%", label: "三证据通道 KG 运行 · 最终 best-seen 相较初始 best" }
+            - { value: "+14%", label: "RAG · 留出集 Spearman 相较非 RAG" }
+
+projects:
+  eyebrow: AI Agent 产品实践
+  title: 把智能体做成可使用的产品流程
+  intro: >-
+    两项实践分别面向创业内容生成与多人城市决策。除了 Agent 编排，我更关注如何把模糊需求变成结构化状态，并让中间推理、约束与最终产物能被用户理解和调整。
+  ui:
+    gallery_label: Demo 界面截图
+    show_gallery: 展开结果展示
+    hide_gallery: 收起结果展示
+    screenshots_label: 张界面截图
+    expand: 查看大图
+    previous: 上一张
+    next: 下一张
+    close: 关闭
+  items:
+    - id: hackerchain
+      number: "01"
+      name: HackerChain
+      subtitle: 黑客松创业工作流智能体
+      badge: "AI Future 黑客马拉松 · 第 8 名"
+      summary: >-
+        面向创业新手，以多轮 Agent 提取结构化需求，并自动生成商业方案、展示网页、品牌海报与社媒内容，将从创意对话到可发布内容的链路收拢到一个工作区中。
+      facts:
+        - { label: 项目成果, value: "AI Future 黑客马拉松第 8 名" }
+        - { label: 主办单位, value: 北京中关村学院、中关村人工智能研究院 }
+        - { label: 负责模块, value: 结构化需求提取、端到端海报生成 }
+        - { label: 产物链路, value: 商业方案 → 展示网页 → 品牌海报 → 社媒内容 }
+      tags:
+        - Multi-Agent
+        - 需求建模
+        - 内容生成
+        - 视觉产物
+      # 后续将 Demo 文件路径填入 href，页面会自动显示下载按钮。
+      download:
+        href: ""
+        filename: ""
+        label: 下载项目 Demo
+      gallery:
+        - src: assets/demos/hackerchain-workspace.jpg
+          width: 2048
+          height: 1280
+          alt: HackerChain 创意对话与成果展示的双栏工作区
+          caption: 多轮创意对话与成果展示工作区
+        - src: assets/demos/hackerchain-workflow.jpg
+          width: 1280
+          height: 1617
+          alt: HackerChain AI 创业助手的完整页面，展示需求分析、页面构建与社媒发布
+          caption: 从智能对话、分析到社媒发布的端到端流程
+        - src: assets/demos/hackerchain-social-output.jpg
+          width: 1316
+          height: 2832
+          alt: HackerChain 生成的小红书 AI 创业内容移动端页面
+          caption: 面向社交平台的可发布内容产物
+
+    - id: hepai
+      number: "02"
+      name: 合拍成行
+      subtitle: AI Agent 辅助的多人城市活动决策与行动规划系统
+      badge: 独立开发
+      summary: >-
+        面向 2–4 人城市活动，以 Agent 驱动的“心愿牌阵”低负担挖掘需求，按“个人目标–安心边界–路线事实”生成共同解释；通过个性化探问、心愿合成与约束引擎，减少信息拼接并输出可微调路线。
+      facts:
+        - { label: 使用场景, value: "2–4 人城市活动决策" }
+        - { label: 核心流程, value: 心愿牌阵 → 共同解释 → 可微调路线 }
+        - { label: 技术路线, value: 结构化偏好 → 共识合成 → 路线事实核验 → 约束驱动增量重规划 }
+      tags:
+        - 多人决策
+        - 偏好合成
+        - 约束引擎
+        - 可解释路线
+      # 后续将 Demo 文件路径填入 href，页面会自动显示下载按钮。
+      download:
+        href: ""
+        filename: ""
+        label: 下载项目 Demo
+      gallery:
+        - src: assets/demos/hepai-wish-landing.png
+          width: 1440
+          height: 1000
+          alt: 合拍成行城市心愿牌阵首页，可选择同行人数并开始翻牌
+          caption: 用低负担心愿牌阵启动多人决策
+        - src: assets/demos/hepai-personal-deck.png
+          width: 430
+          height: 932
+          alt: 合拍成行移动端个人心愿牌选择页面
+          caption: 个性化探问：先分别表达，避免群体讨论过早收敛
+        - src: assets/demos/hepai-route-options.png
+          width: 1440
+          height: 1000
+          alt: 合拍成行展示三条城市路线与事实核验状态
+          caption: 将共同心愿翻译为三条可比较、可核验的路线
+        - src: assets/demos/hepai-shared-reading.png
+          width: 1440
+          height: 1000
+          alt: 合拍成行共同心愿解读页，展示三种路线与同行者愿望
+          caption: 共同心愿解读：解释相同选择背后的不同原因
+        - src: assets/demos/hepai-action-plan.png
+          width: 1440
+          height: 1000
+          alt: 合拍成行行动计划页，包含场地备选、天气依据与可替换部分
+          caption: 约束变化时只更新必要部分，保留已形成的共识
 
 publications:
   eyebrow: 成果
   title: 论文、在审稿件与专利
   note: >-
-    在审稿件均标注投稿期刊/会议与本人作者位次，不与已发表成果重复计数。
+    已发表论文使用期刊记录中的官方英文题名。未公开最终标题的在审及原则接收工作，以英文研究方向概述代替，并标注投稿期刊或会议和作者位次。
+  overview_label: 研究方向概述
+  not_title_label: 非论文真实标题
   groups:
-    - label: 在审
+    - label: 在审稿件
       kind: review
       items:
         - authors: "**Dawei Huang** et al."
-          title: Protein design via latent diffusion
+          summary: Latent diffusion for protein design
           venue: NeurIPS 2026
           role: 第一作者
           status: 审稿中
         - authors: "Kaiwen Cheng, … , **Dawei Huang** et al."
-          title: Dynamic modeling through collective supervision
+          summary: Collective supervision for dynamic modeling
           venue: NeurIPS 2026
           role: 第三作者
           status: 审稿中
         - authors: "Jun Wu, … , **Dawei Huang** et al."
-          title: Cross-task screening using internal representations
+          summary: Cross-task screening with internal representations
           venue: NeurIPS 2026
           role: 第四作者
           status: 审稿中
         - authors: "Zhu Si, … , **Dawei Huang** et al."
-          title: Flexible protein complex modeling
+          summary: Flexible protein complex modeling
           venue: Nature Microbiology
           role: 第四作者
           status: 审稿中
@@ -307,23 +334,27 @@ publications:
       kind: published
       items:
         - authors: "Tianxu Lv, … , **Dawei Huang** et al."
-          title: T 细胞受体基础模型
+          summary: Foundation modeling for T-cell receptors
           venue: Nature Communications, 2026
           status: 原则接收
         - authors: "Jiaqi Su, Fu V. Song, **Dawei Huang**, Maofu Liao"
-          title: 万亿级组合化学库的构建与表征
+          title: Constructing and characterizing trillion-scale combinatorial chemical library
           venue: Journal of Cheminformatics, 2026 · Q1
           role: 第三作者
           doi: 10.1186/s13321-026-01185-7
         - authors: "**Dawei Huang**, Guixian Zhong, Shiyang Zhang, Kerui Jiang, Chen Wang, Jian Wu, Bo Wang"
           title: >-
-            腺毛特异性分析与 WGCNA 揭示黄花蒿青蒿素生物合成的潜在调控机制
+            Trichome-Specific Analysis and Weighted Gene Co-Expression Correlation
+            Network Analysis (WGCNA) Reveal Potential Regulation Mechanism of
+            Artemisinin Biosynthesis in *Artemisia annua*
           venue: International Journal of Molecular Sciences, 2023 · Q1
           role: 第一作者
           doi: 10.3390/ijms24108473
         - authors: "Shiyang Zhang, Huiting Xu, Guixian Zhong, **Dawei Huang**, Kerui Jiang, Jian Wu, Bo Wang"
           title: >-
-            黄花蒿 GPI 锚定脂质转移蛋白 AaLTPG1 促进植物体内萜类化合物积累
+            Promiscuous *Artemisia annua* glycosylphosphatidylinositol-anchored
+            lipid transfer protein 1 (AaLTPG1) promotes terpenoids accumulation
+            in planta
           venue: Industrial Crops and Products, 2023 · Q1
           role: 第四作者
           doi: 10.1016/j.indcrop.2023.117684
@@ -336,38 +367,32 @@ publications:
 
 background:
   eyebrow: 经历
-  title: 这些工作在哪里完成
   positions:
-    - org: 腾讯 AI Lab
+    - org: 腾讯
       unit: 科学大模型组
-      role: 机器学习方向 研究实习生
+      role: 机器学习研究实习生
       period: 2025 年 9 月 – 2026 年 7 月
-      logo_text: Tencent
-      logo_color: "#3D6E8C"
-      people: "Supervisor：姚建华（腾讯杰出科学家） · Mentor：吴凡迪"
+      logo_image: assets/tencent.png
+      people: "主管：姚建华（腾讯杰出科学家） · 导师：吴凡迪"
       bullets:
         - >-
-          搭建生成式结构设计模型 **PLDesign**，
-          其产出在我们的评测中超越相似架构的 Proteina-Complexa（NVIDIA）的可设计性。
+          构建生成式结构设计模型 **PLDesign**。在我们的评测中，其生成结构的可设计性优于架构相近的 Proteina-Complexa（NVIDIA）。
         - >-
           构建腾讯科学智能体系统的 **WorkBuddy MCP 模块**。
         - >-
-          负责 **IgGM** 设计模型的推理工作，
-          该模型在 AIntibody 世界抗体设计大赛中取得 **Top 3**。
+          负责 **IgGM** 设计模型的推理工作，该模型在 AIntibody 世界抗体设计大赛中取得 **Top 3**。
     - org: 南方科技大学
       unit: 廖茂富（讲席教授）课题组 · 生物系
       role: 硕士，AI for Biology
       period: 2023 年 9 月 – 2026 年 7 月
-      logo_image: assets/sustech.png
+      logo_image: assets/sustech-mark.png
       bullets:
-        - >-
-          硕士研究围绕三维结构的生成建模与推理时搜索展开——即上文两条主线。
+        - 研究聚焦于基于空间结构的蛋白质理性设计。
     - org: 华南农业大学
       unit: 丁颖创新班 · 双学位
       role: 软件工程（工学学士）+ 农学（学士）
       period: 2019 年 9 月 – 2023 年 6 月
-      logo_text: SCAU
-      logo_color: "#5D6970"
+      logo_image: assets/scau.png
       bullets:
         - >-
           GPA 4.21 / 5.00 · 专业排名 **第 3**，获得推免资格。
@@ -384,8 +409,8 @@ background:
           - LoRA 高效微调
       - label: 搜索与智能体
         items:
-          - Inference-Time Scaling
-          - Verifier-guided 决策闭环
+          - 推理阶段扩展
+          - 验证器引导的决策闭环
           - 分支 / 剪枝 / 回滚策略
           - 多智能体系统与 MCP
           - 检索与长期记忆
@@ -396,13 +421,6 @@ background:
           - { text: Linux, icon: linux }
           - { text: Git, icon: git }
           - { text: LaTeX, icon: latex }
-      - label: 领域
-        items:
-          - ESM3
-          - AlphaFold3
-          - 分子动力学
-          - 全原子结构表征
-
   awards:
     label: 荣誉奖项
     items:
@@ -420,9 +438,6 @@ contact:
   eyebrow: 联系
   title: 联系方式
   text: >-
-    我正在寻找生成建模与智能体搜索方向的博士岗位与工业界研究岗。
-    如果上面任何一项工作与您课题组正在做的事情相近，邮件是最快找到我的方式——我每封都会看。
+    我正在寻找生成建模与智能体系统治理方向的博士机会和工业界研究岗位，欢迎通过邮件交流研究问题或合作机会。
+  email_label: 邮箱
   email: dawei_huang@163.com
-  footer_note: >-
-    照片摄于丽江玉龙雪山。本站基于 Yixin Huang 的主页模板
-    （其本身改自 Sen Li 的学术主页模板）重构，2026 年。

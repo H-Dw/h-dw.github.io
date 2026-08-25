@@ -1,0 +1,16 @@
+# Local agent notes and review output
+.learnings/
+test-results/
+tmp/
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.code-workspace
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example

@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en">
+<html lang="zh-CN" data-lang="zh">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dawei Huang · Latent generative structure design &amp; self-improving agents</title>
+  <title>黄达威 · 隐空间生成与智能体系统治理</title>
   <meta name="description"
-    content="Dawei Huang works on latent representation spaces for generative structure design and on search loops that improve themselves from their own results." />
+    content="黄达威，研究面向蛋白质结构生成的隐空间表征，以及执行状态与知识状态的智能体系统治理。" />
   <meta name="author" content="Dawei Huang" />
   <meta name="theme-color" content="#EEF0F1" />
-  <link rel="canonical" href="https://h-dw.github.io/" />
+  <link rel="canonical" href="https://h-dw.github.io/H-Dw/" />
 
   <meta property="og:type" content="profile" />
-  <meta property="og:title" content="Dawei Huang · Latent generative structure design &amp; self-improving agents" />
+  <meta property="og:title" content="黄达威 · 隐空间生成与智能体系统治理" />
   <meta property="og:description"
-    content="Latent representation spaces for generative structure design, and search loops that improve themselves." />
-  <meta property="og:url" content="https://h-dw.github.io/" />
-  <meta property="og:image" content="https://h-dw.github.io/assets/hero-bg.jpg" />
+    content="面向蛋白质结构生成的隐空间表征，以及执行状态与知识状态的智能体系统治理。" />
+  <meta property="og:url" content="https://h-dw.github.io/H-Dw/" />
+  <meta property="og:image" content="https://h-dw.github.io/H-Dw/assets/hero-bg.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -30,36 +30,47 @@
     rel="stylesheet" />
   <link rel="preload" as="image" href="assets/hero-bg.jpg" />
 
-  <link rel="stylesheet" href="css/site.css" />
+  <link rel="stylesheet" href="css/site.css?v=20260826-research-intro-align-6" />
 </head>
 
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main">跳至正文</a>
 
   <!-- ── Top bar ─────────────────────────────────────────────────────── -->
   <header class="topbar" id="topbar">
     <div class="shell topbar-inner">
       <a class="brand" href="#top">
-        <svg class="brand-mark" viewBox="0 0 22 16" aria-hidden="true">
-          <path d="M2 8 H7 L12 4 H20 M12 12 H20 M7 8 L12 12" />
-          <circle cx="2" cy="8" r="1.6" class="brand-dot-a" />
-          <circle cx="20" cy="4" r="2" class="brand-dot-b" />
-          <circle cx="20" cy="12" r="1.4" class="brand-dot-c" />
-        </svg>
         <span class="brand-name" data-bind="brand"></span>
       </a>
 
-      <nav class="topnav" aria-label="Sections">
-        <a href="#research" data-bind="nav.research"></a>
-        <a href="#publications" data-bind="nav.publications"></a>
+      <nav class="topnav" aria-label="页面导航">
         <a href="#background" data-bind="nav.background"></a>
+        <a href="#research" data-bind="nav.research"></a>
+        <a href="#projects" data-bind="nav.projects"></a>
+        <a href="#publications" data-bind="nav.publications"></a>
         <a href="#contact" data-bind="nav.contact"></a>
       </nav>
+
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false"
+        aria-controls="mobile-nav">
+        <span class="nav-toggle-label">目录</span>
+        <span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span></span>
+      </button>
 
       <button class="lang-toggle" id="lang-toggle" type="button">
         <span data-bind="meta.switch_to"></span>
       </button>
     </div>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="页面导航" hidden>
+      <div class="shell mobile-nav-inner">
+        <a href="#background" data-bind="nav.background"></a>
+        <a href="#research" data-bind="nav.research"></a>
+        <a href="#projects" data-bind="nav.projects"></a>
+        <a href="#publications" data-bind="nav.publications"></a>
+        <a href="#contact" data-bind="nav.contact"></a>
+      </div>
+    </nav>
   </header>
 
   <main id="main">
@@ -69,59 +80,69 @@
         <img src="assets/hero-bg.jpg" alt="" fetchpriority="high" />
       </div>
       <div class="shell hero-grid">
-        <figure class="hero-portrait">
-          <img src="assets/portrait.jpg" alt="" width="720" height="900" id="portrait" />
-        </figure>
+        <div class="hero-profile">
+          <figure class="hero-portrait">
+            <img src="assets/portrait.jpg"
+              srcset="assets/portrait-sm.jpg 360w, assets/portrait.jpg 720w"
+              sizes="(max-width: 760px) 148px, 180px" alt="" width="720" height="900"
+              decoding="async" id="portrait" />
+          </figure>
+        </div>
         <div class="hero-text">
-          <p class="hero-eyebrow" data-bind="hero.eyebrow"></p>
           <h1 class="hero-name">
             <span class="hero-name-main" data-bind="hero.name"></span>
             <span class="hero-name-alt" data-bind="hero.name_native"></span>
           </h1>
           <p class="hero-thesis" data-bind-md="hero.thesis"></p>
-          <div class="hero-actions" id="hero-actions"></div>
         </div>
+        <div class="hero-actions" id="hero-actions"></div>
+        <p class="hero-eyebrow" data-bind="hero.eyebrow"></p>
       </div>
     </section>
 
-    <!-- ── Process strip: the signature diagram ──────────────────────── -->
-    <section class="strip">
+    <!-- ── Background ────────────────────────────────────────────────── -->
+    <section class="section section-alt" id="background">
       <div class="shell">
-        <p class="eyebrow" data-bind="process.eyebrow"></p>
-        <figure class="loop">
-          <div class="loop-canvas">
-            <canvas id="loop-canvas" role="img"
-              aria-label="A diagram running left to right: a cloud of latent samples, a search tree whose weak branches are pruned and one of which is rolled back, and a surviving path that carries samples into an assembled structure."></canvas>
-          </div>
-          <figcaption>
-            <ol class="loop-legend" id="loop-legend"></ol>
-            <p class="loop-caption" data-bind-md="process.caption"></p>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- ── Ledger ────────────────────────────────────────────────────── -->
-    <section class="ledger-band">
-      <div class="shell">
-        <dl class="ledger" id="ledger"></dl>
+        <p class="eyebrow background-eyebrow" data-bind="background.eyebrow"></p>
+        <div class="positions" id="positions"></div>
       </div>
     </section>
 
     <!-- ── Research ──────────────────────────────────────────────────── -->
     <section class="section" id="research">
       <div class="shell">
-        <div class="section-head">
-          <p class="eyebrow" data-bind="research.eyebrow"></p>
-          <h2 class="section-title" data-bind="research.title"></h2>
-          <p class="section-intro" data-bind-md="research.intro"></p>
+        <div class="research-overview">
+          <div class="section-head research-head">
+            <p class="eyebrow" data-bind="research.eyebrow"></p>
+            <h2 class="section-title" data-bind="research.title"></h2>
+          </div>
+          <p class="section-intro research-intro" data-bind-md="research.intro"></p>
+          <figure class="denoise-visual">
+            <figcaption class="denoise-caption" data-bind="research.animation.title"></figcaption>
+            <div class="denoise-stage">
+              <canvas id="protein-denoise-canvas" role="img"
+                data-bind-aria-label="research.animation.aria_label"></canvas>
+            </div>
+          </figure>
         </div>
         <div class="tracks" id="tracks"></div>
       </div>
     </section>
 
+    <!-- ── AI Agent product practice ─────────────────────────────────── -->
+    <section class="section projects-section" id="projects">
+      <div class="shell">
+        <div class="section-head projects-head">
+          <p class="eyebrow" data-bind="projects.eyebrow"></p>
+          <h2 class="section-title" data-bind="projects.title"></h2>
+          <p class="section-intro" data-bind-md="projects.intro"></p>
+        </div>
+        <div class="project-cases" id="project-cases"></div>
+      </div>
+    </section>
+
     <!-- ── Publications ──────────────────────────────────────────────── -->
-    <section class="section section-alt" id="publications">
+    <section class="section" id="publications">
       <div class="shell">
         <div class="section-head">
           <p class="eyebrow" data-bind="publications.eyebrow"></p>
@@ -132,17 +153,12 @@
       </div>
     </section>
 
-    <!-- ── Background ────────────────────────────────────────────────── -->
-    <section class="section" id="background">
+    <!-- ── Awards & toolkit ─────────────────────────────────────────── -->
+    <div class="section section-alt profile-details" id="profile-details">
       <div class="shell">
-        <div class="section-head">
-          <p class="eyebrow" data-bind="background.eyebrow"></p>
-          <h2 class="section-title" data-bind="background.title"></h2>
-        </div>
-        <div class="positions" id="positions"></div>
         <div class="sidecards" id="sidecards"></div>
       </div>
-    </section>
+    </div>
 
     <!-- ── Contact ───────────────────────────────────────────────────── -->
     <section class="section contact" id="contact">
@@ -155,25 +171,48 @@
     </section>
   </main>
 
+  <dialog class="demo-lightbox" id="demo-lightbox">
+    <div class="demo-lightbox-toolbar">
+      <span class="demo-lightbox-count" id="demo-lightbox-count" aria-live="polite"
+        aria-atomic="true"></span>
+      <button class="demo-lightbox-close" id="demo-lightbox-close" type="button">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="demo-lightbox-view">
+      <button class="demo-lightbox-nav demo-lightbox-prev" id="demo-lightbox-prev"
+        type="button" aria-label="Previous image">
+        <span aria-hidden="true">←</span>
+      </button>
+      <figure class="demo-lightbox-figure">
+        <img id="demo-lightbox-image" alt="" />
+        <figcaption id="demo-lightbox-caption"></figcaption>
+      </figure>
+      <button class="demo-lightbox-nav demo-lightbox-next" id="demo-lightbox-next"
+        type="button" aria-label="Next image">
+        <span aria-hidden="true">→</span>
+      </button>
+    </div>
+  </dialog>
+
   <footer class="footer">
     <div class="shell footer-inner">
       <p class="footer-copy" id="footer-copy"></p>
-      <p class="footer-note" data-bind="contact.footer_note"></p>
     </div>
   </footer>
 
   <noscript>
     <div class="shell noscript">
-      This page renders its content with JavaScript. The same material is in the
-      CV: <a href="assets/cv/Dawei-Huang-CV-EN.pdf">Dawei-Huang-CV-EN.pdf</a>.
+      This page renders its content with JavaScript.
+      <!-- CV downloads are paused. Restore the link here when public downloads resume. -->
     </div>
   </noscript>
 
   <script src="js/vendor/marked.min.js"></script>
   <script src="js/vendor/js-yaml.min.js"></script>
   <script src="js/brand-icons.js"></script>
-  <script src="js/latent-search.js"></script>
-  <script src="js/site.js"></script>
+  <script src="js/protein-denoise.js?v=20260825-webp-1"></script>
+  <script src="js/site.js?v=20260826-research-tracks-5"></script>
 </body>
 
 </html>

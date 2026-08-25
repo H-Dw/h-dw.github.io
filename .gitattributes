@@ -1,0 +1,3 @@
+# PDB records are fixed-width scientific data. Preserve their original bytes
+# and do not treat required padding as trailing whitespace.
+assets/1rop.pdb -text -whitespace
