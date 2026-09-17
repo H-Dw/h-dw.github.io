@@ -172,7 +172,7 @@ research:
           subtitle: Injecting molecular-dynamics distributions into a pretrained structure module
           tags:
             - { text: "Ongoing", kind: muted }
-            - { text: "Related work under review at NeurIPS 2026 · third author", kind: muted }
+            - { text: "Related work under review at NeurIPS 2026 · co-first author", kind: muted }
           question: >-
             Molecular-dynamics simulations can cover broad conformational
             landscapes but are computationally expensive and sample inefficiently.
@@ -429,7 +429,7 @@ publications:
         - authors: "Kaiwen Cheng, … , **Dawei Huang** et al."
           summary: Collective supervision for dynamic modeling
           venue: NeurIPS 2026
-          role: Third author
+          role: Co-first author
           status: Under review
         - authors: "Jun Wu, … , **Dawei Huang** et al."
           summary: Cross-task screening with internal representations
@@ -445,9 +445,9 @@ publications:
       kind: published
       items:
         - authors: "Tianxu Lv, … , **Dawei Huang** et al."
-          summary: Foundation modeling for T-cell receptors
+          title: "UpTCR: a unified progressive knowledge transfer foundation model for robust T-cell receptor-antigen binding recognition"
           venue: Nature Communications, 2026
-          status: Accepted in principle
+          status: Accepted
         - authors: "Jiaqi Su, Fu V. Song, **Dawei Huang**, Maofu Liao"
           title: Constructing and characterizing trillion-scale combinatorial chemical library
           venue: Journal of Cheminformatics, 2026 · Q1
@@ -479,12 +479,21 @@ publications:
 background:
   eyebrow: Background
   positions:
+    - org: Shanghai Jiao Tong University
+      unit: Prof. Peilin Zhao's group · School of Artificial Intelligence
+      unit_role_size: true
+      role: Research intern
+      period: Sep 2026 – Present
+      logo_image: assets/sjtu.png
+      bullets:
+        - "Research focus: machine learning and its applications (AI for drug discovery)."
     - org: Tencent
       unit: Foundation Model for Science group
       role: Machine learning research intern
       period: Sep 2025 – Jul 2026
       logo_image: assets/tencent.png
       people: "Supervisor: Jianhua Yao (Tencent Distinguished Scientist) · Mentor: Fandi Wu"
+      people_unit_size: true
       bullets:
         - >-
           Built **PLDesign**, a generative structure design model. In our
@@ -492,13 +501,14 @@ background:
           than those from the architecturally comparable Proteina-Complexa
           (NVIDIA).
         - >-
-          Built the **WorkBuddy MCP module** of Tencent's agent system for
-          scientific work.
+          Contributed to Tencent's scientific agent system (the **Tencent Health
+          BioMed AI submodule**) and was responsible for building its MCP module.
         - >-
           Led the inference work for the **IgGM** design model, which placed
           **top 3** in the AIntibody global antibody design challenge.
     - org: Southern University of Science and Technology
       unit: Maofu Liao group (Chair Professor) · School of Life Sciences
+      unit_role_size: true
       role: M.S. in AI for Biology
       period: Sep 2023 – Jul 2026
       logo_image: assets/sustech-mark.png

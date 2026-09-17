@@ -125,7 +125,7 @@ research:
           subtitle: 将分子动力学分布高效注入预训练结构模块
           tags:
             - { text: "进行中", kind: muted }
-            - { text: "同方向工作在投 NeurIPS 2026 · 三作", kind: muted }
+            - { text: "同方向工作在投 NeurIPS 2026 · 共同一作", kind: muted }
           question: >-
             分子动力学模拟能够覆盖广泛的构象空间，但计算开销高、采样效率有限。预训练结构模型擅长静态结构建模，却缺乏对动态构象分布的刻画，因而难以低成本采样替代构象。
           insight: >-
@@ -318,7 +318,7 @@ publications:
         - authors: "Kaiwen Cheng, … , **Dawei Huang** et al."
           summary: Collective supervision for dynamic modeling
           venue: NeurIPS 2026
-          role: 第三作者
+          role: 共同一作
           status: 审稿中
         - authors: "Jun Wu, … , **Dawei Huang** et al."
           summary: Cross-task screening with internal representations
@@ -334,9 +334,9 @@ publications:
       kind: published
       items:
         - authors: "Tianxu Lv, … , **Dawei Huang** et al."
-          summary: Foundation modeling for T-cell receptors
+          title: "UpTCR: a unified progressive knowledge transfer foundation model for robust T-cell receptor-antigen binding recognition"
           venue: Nature Communications, 2026
-          status: 原则接收
+          status: 已接收
         - authors: "Jiaqi Su, Fu V. Song, **Dawei Huang**, Maofu Liao"
           title: Constructing and characterizing trillion-scale combinatorial chemical library
           venue: Journal of Cheminformatics, 2026 · Q1
@@ -368,21 +368,31 @@ publications:
 background:
   eyebrow: 经历
   positions:
+    - org: 上海交通大学
+      unit: 赵沛霖教授课题组 · 人工智能学院
+      unit_role_size: true
+      role: 研究实习生
+      period: 2026 年 9 月 – 至今
+      logo_image: assets/sjtu.png
+      bullets:
+        - 研究方向：机器学习及其应用（制药 AI）。
     - org: 腾讯
       unit: 科学大模型组
       role: 机器学习研究实习生
       period: 2025 年 9 月 – 2026 年 7 月
       logo_image: assets/tencent.png
       people: "主管：姚建华（腾讯杰出科学家） · 导师：吴凡迪"
+      people_unit_size: true
       bullets:
         - >-
           构建生成式结构设计模型 **PLDesign**。在我们的评测中，其生成结构的可设计性优于架构相近的 Proteina-Complexa（NVIDIA）。
         - >-
-          构建腾讯科学智能体系统的 **WorkBuddy MCP 模块**。
+          参与构建腾讯科学智能体系统（**腾讯健康 BioMed AI 子模块**），负责 MCP 模块搭建。
         - >-
           负责 **IgGM** 设计模型的推理工作，该模型在 AIntibody 世界抗体设计大赛中取得 **Top 3**。
     - org: 南方科技大学
       unit: 廖茂富（讲席教授）课题组 · 生命科学学院
+      unit_role_size: true
       role: 硕士，AI for Biology
       period: 2023 年 9 月 – 2026 年 7 月
       logo_image: assets/sustech-mark.png

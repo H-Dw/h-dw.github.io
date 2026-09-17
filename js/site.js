@@ -462,10 +462,13 @@
           '<div class="pos-identity">' +
             '<h3 class="pos-org">' + esc(p.org) + "</h3>" +
             '<p class="pos-role">' + esc(p.role) + "</p>" +
-            '<p class="pos-unit">' + esc(p.unit) + "</p>" +
+            '<p class="pos-unit' + (p.unit_role_size ? " pos-unit--role-size" : "") +
+              '">' + esc(p.unit) + "</p>" +
           "</div>" +
           '<div class="pos-details">' +
-            (p.people ? '<p class="pos-people">' + esc(p.people) + "</p>" : "") +
+            (p.people ? '<p class="pos-people' +
+              (p.people_unit_size ? " pos-people--unit-size" : "") + '">' +
+              esc(p.people) + "</p>" : "") +
             (bullets ? '<ul class="pos-bullets">' + bullets + "</ul>" : "") +
           "</div>" +
         "</article>"

@@ -30,6 +30,7 @@
   --font-mono: "IBM Plex Mono", "Noto Sans SC", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --font-sans: "IBM Plex Sans", "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI",
     "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-serif: "Noto Serif SC", "Songti SC", SimSun, serif;
 
   --shell: 1160px;
   --bar-h: 60px;
@@ -137,13 +138,20 @@ a:hover {
   color: var(--ink);
   font-family: var(--font-mono);
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: clamp(1.05rem, 1.35vw, 1.14rem);
+  line-height: 1;
   letter-spacing: -0.01em;
   margin-right: auto;
 }
 
 .brand:hover {
   text-decoration: none;
+}
+
+html[data-lang="zh"] .brand {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
 .topnav {
@@ -1851,7 +1859,9 @@ body:has(.demo-lightbox[open]) {
   letter-spacing: 0.16em;
 }
 
-.background-eyebrow {
+#background .background-eyebrow {
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  font-weight: 700;
   margin-bottom: clamp(28px, 3.5vw, 42px);
 }
 
@@ -1892,6 +1902,7 @@ body:has(.demo-lightbox[open]) {
   height: auto;
 }
 
+.pos-logo img[src$="sjtu.png"],
 .pos-logo img[src$="sustech-mark.png"],
 .pos-logo img[src$="scau.png"] {
   width: 47.23px;
@@ -1936,12 +1947,20 @@ body:has(.demo-lightbox[open]) {
   color: var(--slate);
 }
 
+.pos-unit.pos-unit--role-size {
+  font-size: 0.94rem;
+}
+
 .pos-people {
   margin: 0;
   font-family: var(--font-mono);
   font-size: 0.76rem;
   line-height: 1.55;
   color: var(--slate-2);
+}
+
+.pos-details .pos-people--unit-size {
+  font-size: 0.88rem;
 }
 
 .pos-bullets {
