@@ -5,10 +5,10 @@
 # ---------------------------------------------------------------------------
 
 meta:
-  title: "Dawei Huang · Latent-based generation & agent-system governance"
+  title: "Dawei Huang · Latent-based generation & Agentic Systems"
   description: >-
     Dawei Huang studies latent representations for protein structure generation
-    and agent-system governance across execution and knowledge states, with
+    and Agentic Systems that coordinate execution and knowledge states, with
     research experience in the Foundation Model for Science group at Tencent.
   switch_to: "中文"
   switch_hint: "Switch to Chinese"
@@ -23,12 +23,12 @@ nav:
 hero:
   name: Dawei Huang
   name_native: 黄达威
-  eyebrow: Latent-based generation · Agent-system governance
+  eyebrow: Latent-based generation · Agentic Systems
   thesis: >-
     I see each model as engaging with the world from a particular perspective. Inwardly, representation
-    gathers complexity until material regularities appear. Outwardly, governance
-    lets partial views test, correct and coordinate with one another. **Knowledge-guided representation
-    gives both a common form.** It governs what compression leaves behind and
+    gathers complexity until material regularities appear. Outwardly, Agentic Systems
+    let partial views test, correct and coordinate with one another. **Knowledge-guided representation
+    gives both a common form.** It shapes what compression leaves behind and
     lets plurality disclose the whole.
   portrait_alt: Dawei Huang
   actions:
@@ -49,14 +49,14 @@ research:
     In my research, this view takes the form of two connected technical paths.
     **Latent-based generation** studies how representations preserve interfacial
     geometry, coupling and conformational distributions, and how they support
-    generation, evaluation and inference-time search. **Agent-system governance**
+    generation, evaluation and inference-time search. **Agentic Systems**
     studies how iterative workflows coordinate models, tools, evidence and memory
     to enable verifiable execution and traceable scientific decisions.
     Representations define the information available to individual models.
-    Governance integrates these partial views into a cycle of generation,
+    System coordination integrates these partial views into a cycle of generation,
     verification and refinement.
   animation:
-    title: Representation-Guided Generation and Agent-System Governance
+    title: Representation-Guided Generation and Agentic Systems
     aria_label: >-
       Two small mage robots wave integrated magic wands and send luminous
       streams into Gaussian noise, forming a three-dimensional cartoon of the
@@ -206,10 +206,10 @@ research:
 
     - id: agents
       numeral: II
-      label: Agent-system governance
+      label: Agentic Systems
       note: >-
-        BinderLoop governs execution state, keeping agent scheduling, verification
-        and rollback controllable. EvoSEEK governs knowledge state, keeping
+        BinderLoop coordinates execution state, keeping agent scheduling, verification
+        and rollback controllable. EvoSEEK manages knowledge state, keeping
         scientific evidence, experimental memory and hypothesis formation traceable.
       stages:
         - id: harness
@@ -567,6 +567,6 @@ contact:
   title: Get in touch
   text: >-
     I am seeking PhD and industry research opportunities in generative modeling
-    and agent-system governance. I welcome research and collaboration inquiries by email.
+    and Agentic Systems. I welcome research and collaboration inquiries by email.
   email_label: Email
   email: dawei_huang@163.com
