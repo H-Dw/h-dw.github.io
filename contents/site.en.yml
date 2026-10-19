@@ -437,11 +437,11 @@ publications:
     - label: Published and accepted
       kind: published
       items:
-        - authors: "[Kaiwen Cheng](https://openreview.net/profile?id=~Kaiwen_Cheng1), [Fandi Wu](https://openreview.net/profile?id=~Fandi_Wu1), [**Dawei Huang**](https://openreview.net/profile?id=~Dawei_Huang4), [Jun Wu](https://openreview.net/profile?id=~Jun_Wu29), [Jianhua Yao](https://openreview.net/profile?id=~Jianhua_Yao3)"
+        - authors: "Kaiwen Cheng, Fandi Wu, **Dawei Huang**, Jun Wu, Jianhua Yao"
           title: Collective Supervision for Unified Biomolecular Conformation and Dynamics Modeling with CoDyna
           venue: NeurIPS 2026
           role: Third author
-        - authors: "[Jun Wu](https://openreview.net/profile?id=~Jun_Wu29), [Fandi Wu](https://openreview.net/profile?id=~Fandi_Wu1), [Xinyuan Zhu](https://openreview.net/profile?id=~Xinyuan_Zhu1), [**Dawei Huang**](https://openreview.net/profile?id=~Dawei_Huang4), [Kaiwen Cheng](https://openreview.net/profile?id=~Kaiwen_Cheng1), [Jianzhu Ma](https://openreview.net/profile?id=~Jianzhu_Ma2), [Fuli Feng](https://openreview.net/profile?id=~Fuli_Feng1), [Jianhua Yao](https://openreview.net/profile?id=~Jianhua_Yao3)"
+        - authors: "Jun Wu, Fandi Wu, Xinyuan Zhu, **Dawei Huang**, Kaiwen Cheng, Jianzhu Ma, Fuli Feng, Jianhua Yao"
           title: "FoldAbS: Repurposing the Protein Folding Model as a Foundation Encoder for Antibody Screening"
           venue: NeurIPS 2026
           role: Fourth author
