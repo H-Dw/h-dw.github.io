@@ -437,20 +437,17 @@ publications:
     - label: Published and accepted
       kind: published
       items:
-        - authors: "Kaiwen Cheng, … , **Dawei Huang** et al."
+        - authors: "[Kaiwen Cheng](https://openreview.net/profile?id=~Kaiwen_Cheng1), [Fandi Wu](https://openreview.net/profile?id=~Fandi_Wu1), [**Dawei Huang**](https://openreview.net/profile?id=~Dawei_Huang4), [Jun Wu](https://openreview.net/profile?id=~Jun_Wu29), [Jianhua Yao](https://openreview.net/profile?id=~Jianhua_Yao3)"
           title: Collective Supervision for Unified Biomolecular Conformation and Dynamics Modeling with CoDyna
           venue: NeurIPS 2026
           role: Third author
-          status: Accepted
-        - authors: "Jun Wu, … , **Dawei Huang** et al."
+        - authors: "[Jun Wu](https://openreview.net/profile?id=~Jun_Wu29), [Fandi Wu](https://openreview.net/profile?id=~Fandi_Wu1), [Xinyuan Zhu](https://openreview.net/profile?id=~Xinyuan_Zhu1), [**Dawei Huang**](https://openreview.net/profile?id=~Dawei_Huang4), [Kaiwen Cheng](https://openreview.net/profile?id=~Kaiwen_Cheng1), [Jianzhu Ma](https://openreview.net/profile?id=~Jianzhu_Ma2), [Fuli Feng](https://openreview.net/profile?id=~Fuli_Feng1), [Jianhua Yao](https://openreview.net/profile?id=~Jianhua_Yao3)"
           title: "FoldAbS: Repurposing the Protein Folding Model as a Foundation Encoder for Antibody Screening"
           venue: NeurIPS 2026
           role: Fourth author
-          status: Accepted
-        - authors: "Tianxu Lv, … , **Dawei Huang** et al."
+        - authors: "Tianxu Lv, Yang Xiao, Li Chen, Bing He, Maiyi Zhong, Zihan Feng, Zheyu Hu, Fei Ye, Jiashu Han, Shouzhi Chen, Zhenchao Tang, Jiale Zhou, **Dawei Huang**, Xiaoqing Lian, Jiansong Fan, Yixuan Huang, Chenyi Lei, Dandan Meng, Yuan Liu, Lihua Li, Pengjiang Qian, Jianhua Yao, Kai Miao, Xiao Liu, Xiang Pan"
           title: "UpTCR: a unified progressive knowledge transfer foundation model for robust T-cell receptor-antigen binding recognition"
           venue: Nature Communications, 2026
-          status: Accepted
           doi: 10.1038/s41467-026-78075-x
         - authors: "Jiaqi Su, Fu V. Song, **Dawei Huang**, Maofu Liao"
           title: Constructing and characterizing trillion-scale combinatorial chemical library
@@ -476,9 +473,10 @@ publications:
     - label: Patent
       kind: patent
       items:
-        - authors: "Second inventor"
+        - authors: "Bo Wang, **Dawei Huang**, Guixian Zhong"
           title: Separation device for artemisinin and polymethoxyflavones
           venue: CN202220443530.3
+          role: Second inventor
 
 background:
   eyebrow: Background
