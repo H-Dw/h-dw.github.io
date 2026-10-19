@@ -318,7 +318,7 @@ publications:
         - authors: "Kaiwen Cheng, … , **Dawei Huang** et al."
           summary: Collective supervision for dynamic modeling
           venue: NeurIPS 2026
-          role: 共同一作
+          role: 第三作者
           status: 审稿中
         - authors: "Jun Wu, … , **Dawei Huang** et al."
           summary: Cross-task screening with internal representations
