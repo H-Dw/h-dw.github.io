@@ -337,6 +337,7 @@ publications:
           title: "UpTCR: a unified progressive knowledge transfer foundation model for robust T-cell receptor-antigen binding recognition"
           venue: Nature Communications, 2026
           status: 已接收
+          doi: 10.1038/s41467-026-78075-x
         - authors: "Jiaqi Su, Fu V. Song, **Dawei Huang**, Maofu Liao"
           title: Constructing and characterizing trillion-scale combinatorial chemical library
           venue: Journal of Cheminformatics, 2026 · Q1
