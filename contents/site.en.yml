@@ -414,15 +414,10 @@ projects:
 publications:
   eyebrow: Publications
   title: Papers, preprints and patents
-  note: >-
-    Published and accepted papers, and manuscripts with confirmed titles, use
-    their full titles. Other manuscripts under review are listed by research
-    focus, with venue and authorship position.
-  overview_label: Research focus
-  not_title_label: Descriptive summary, not manuscript title
   groups:
     - label: Manuscripts under review
       kind: review
+      note: Entries below describe the research focus in place of the submitted manuscript titles.
       items:
         - authors: "**Dawei Huang** et al."
           title: Co-denoising Binder Design in a Unified Complex Latent Space

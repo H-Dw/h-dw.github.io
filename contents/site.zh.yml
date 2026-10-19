@@ -302,13 +302,10 @@ projects:
 publications:
   eyebrow: 成果
   title: 论文、在审稿件与专利
-  note: >-
-    已发表、已接收及已明确题名的在审稿件使用完整论文标题。其余在审工作以英文研究方向概述展示，并标注投稿期刊或会议和作者位次。
-  overview_label: 研究方向概述
-  not_title_label: 非论文真实标题
   groups:
     - label: 在审稿件
       kind: review
+      note: 以下在审稿件以研究内容概述替代正式投稿标题。
       items:
         - authors: "**Dawei Huang** et al."
           title: Co-denoising Binder Design in a Unified Complex Latent Space

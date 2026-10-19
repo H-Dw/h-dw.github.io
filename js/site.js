@@ -404,7 +404,6 @@
 
     (pubs.groups || []).forEach(function (g) {
       var items = (g.items || []).map(function (p) {
-        var isOverview = !!p.summary;
         var heading = p.summary || p.title || "";
         var flags = [];
         if (p.status) {
@@ -421,10 +420,7 @@
             '" target="_blank" rel="noopener">doi:' + esc(p.doi) + "</a>");
         }
         return '<li class="pub"><div class="pub-body">' +
-          (isOverview
-            ? '<p class="pub-title-context"><span>' + esc(pubs.overview_label) + "</span></p>"
-            : "") +
-          '<p class="pub-title' + (isOverview ? " pub-title--overview" : "") + '">' +
+          '<p class="pub-title">' +
             md(heading) + "</p>" +
           '<p class="pub-meta">' + md(p.authors) +
             (p.venue ? " · " + md(p.venue) : "") + "</p>" +
@@ -434,6 +430,7 @@
 
       host.appendChild(el(
         "<div><h3 class=\"pubgroup-label\">" + esc(g.label) + "</h3>" +
+        (g.note ? '<p class="pubgroup-note">' + esc(g.note) + "</p>" : "") +
         '<ol class="publist">' + items + "</ol></div>"
       ));
     });
