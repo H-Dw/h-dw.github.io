@@ -55,11 +55,10 @@ research:
         可搜索的隐空间为生成、评估与推理时搜索组织结构信息。
       stages:
         - id: space
-          core: true
           title: 统一复合体隐空间协同去噪蛋白质结合物设计
           subtitle: 统一表征界面几何与靶标–结合蛋白耦合关系
           tags:
-            - { text: "NeurIPS 2026 · 审稿中", kind: accent }
+            - { text: "ICLR 2027 · 审稿中", kind: accent }
             - { text: "第一作者", kind: accent }
           question: >-
             现有结合蛋白设计方法通常独立编码靶标与结合蛋白，因而难以联合建模界面几何与靶标–结合蛋白耦合。诱导契合效应的缺失容易导致生成结构的界面堆积松散、接触效率偏低。
@@ -88,8 +87,8 @@ research:
           title: "FANGS：面向融合蛋白设计的片段感知零样本排序"
           subtitle: 以局部结构兼容度连接候选生成与实验筛选
           tags:
-            - { text: "论文撰写中", kind: muted }
-            - { text: "已获湿实验验证", kind: accent }
+            - { text: "Nature Methods · 审稿中", kind: accent }
+            - { text: "第一作者", kind: accent }
           question: >-
             生成模型可以快速提出大量融合蛋白候选，有限的实验预算要求在验证前准确排序。ipTM、pTM 等全局置信度与功能读数相关性有限，难以稳定识别高价值候选。
           insight: >-
@@ -121,26 +120,27 @@ research:
                 evidence: 可通过筛选现有公开 scaffold 数据库，获得结合亲和力与对应 WT 相当甚至更强的 scaffold
 
         - id: prior
-          title: "ESM3-MD：动力学信息增强的蛋白质动态构象采样"
-          subtitle: 将分子动力学分布高效注入预训练结构模块
+          title: Collective Supervision for Unified Biomolecular Conformation and Dynamics Modeling with CoDyna
+          subtitle: 集合监督驱动的生物分子构象与动力学统一建模
           tags:
-            - { text: "进行中", kind: muted }
-            - { text: "同方向工作在投 NeurIPS 2026 · 共同一作", kind: muted }
+            - { text: "NeurIPS 2026", kind: accent }
+            - { text: "第三作者", kind: accent }
           question: >-
-            分子动力学模拟能够覆盖广泛的构象空间，但计算开销高、采样效率有限。预训练结构模型擅长静态结构建模，却缺乏对动态构象分布的刻画，因而难以低成本采样替代构象。
+            逐样本监督难以直接约束构象集合分布与轨迹转移统计，teacher forcing 又会导致长轨迹生成漂移，因而难以同时实现可靠的构象采样与轨迹生成。
           insight: >-
-            将分子动力学轨迹中的时间演化信息编码为**条件概率分布**，再通过 LoRA 高效注入预训练模型的结构模块，使模型能够生成动态构象。
+            结合**集合级物理分布监督**与训练期自回归滚动生成，直接匹配构象集合和多时间间隔的帧对分布，并让模型基于自身生成帧进行滚动去噪，统一构象采样与轨迹生成。
           contributions:
-            - title: 共进化片段语料构建
+            - title: Collective Supervision 集合监督
               text: >-
-                利用同源序列片段构建包含共进化信息的语料，并通过多目标组合优化策略优化提示。相较预训练模型，测试蛋白与替代构象的结构差异（RMSD）降低 **10%**，采样中间态多样性提升 **9%**。
-            - title: ESM3-MD 微调框架
+                在局部原子距离与二面角构成的 SE(3) 不变观测空间中，以 MMD 匹配构象集合及多时间间隔的帧对分布；ATLAS 无模板消融中，成对构象 RMSD 相关性由 **0.51 提升至 0.68**，RMSF 相关性由 **0.61 提升至 0.71**。
+            - title: Collective Rolling Forcing 轨迹训练
               text: >-
-                将分子动力学轨迹的时间信息转换为概率分布，并通过 LoRA 对 ESM3 结构模块进行参数高效微调。相较传统方法，构象覆盖率提升约 **22%**。
+                基于模型自身生成帧进行滚动去噪，结合双层 KV 缓存抑制误差累积；统一建模蛋白单体、蛋白–配体与蛋白–蛋白复合体，在 ATLAS 16 个体系的 2,500 帧外推中，末段 Ramachandran/Rotamer 与 Cα 几何有效率分别达 **100% 和 99.41%**。
           metrics:
-            - { value: "−10%", label: "与异构态的距离" }
-            - { value: "+9%", label: "中间态多样性" }
-            - { value: "+22%", label: "构象覆盖率" }
+            - { value: "0.51 → 0.68", label: "ATLAS 无模板 · 成对构象 RMSD 相关性" }
+            - { value: "0.61 → 0.71", label: "ATLAS 无模板 · RMSF 相关性" }
+            - { value: "100%", label: "2,500 帧外推末段 · Ramachandran/Rotamer 有效率" }
+            - { value: "99.41%", label: "2,500 帧外推末段 · Cα 几何有效率" }
 
     - id: agents
       numeral: II
@@ -303,7 +303,7 @@ publications:
   eyebrow: 成果
   title: 论文、在审稿件与专利
   note: >-
-    已发表论文使用期刊记录中的官方英文题名。未公开最终标题的在审及原则接收工作，以英文研究方向概述代替，并标注投稿期刊或会议和作者位次。
+    已发表、已接收及已明确题名的在审稿件使用完整论文标题。其余在审工作以英文研究方向概述展示，并标注投稿期刊或会议和作者位次。
   overview_label: 研究方向概述
   not_title_label: 非论文真实标题
   groups:
@@ -311,19 +311,9 @@ publications:
       kind: review
       items:
         - authors: "**Dawei Huang** et al."
-          summary: Latent diffusion for protein design
-          venue: NeurIPS 2026
+          title: Co-denoising Binder Design in a Unified Complex Latent Space
+          venue: ICLR 2027
           role: 第一作者
-          status: 审稿中
-        - authors: "Kaiwen Cheng, … , **Dawei Huang** et al."
-          summary: Collective supervision for dynamic modeling
-          venue: NeurIPS 2026
-          role: 第三作者
-          status: 审稿中
-        - authors: "Jun Wu, … , **Dawei Huang** et al."
-          summary: Cross-task screening with internal representations
-          venue: NeurIPS 2026
-          role: 第四作者
           status: 审稿中
         - authors: "Zhu Si, … , **Dawei Huang** et al."
           summary: Flexible protein complex modeling
@@ -333,6 +323,16 @@ publications:
     - label: 已发表与已接收
       kind: published
       items:
+        - authors: "Kaiwen Cheng, … , **Dawei Huang** et al."
+          title: Collective Supervision for Unified Biomolecular Conformation and Dynamics Modeling with CoDyna
+          venue: NeurIPS 2026
+          role: 第三作者
+          status: 已接收
+        - authors: "Jun Wu, … , **Dawei Huang** et al."
+          title: "FoldAbS: Repurposing the Protein Folding Model as a Foundation Encoder for Antibody Screening"
+          venue: NeurIPS 2026
+          role: 第四作者
+          status: 已接收
         - authors: "Tianxu Lv, … , **Dawei Huang** et al."
           title: "UpTCR: a unified progressive knowledge transfer foundation model for robust T-cell receptor-antigen binding recognition"
           venue: Nature Communications, 2026

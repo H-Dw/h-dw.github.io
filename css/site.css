@@ -865,6 +865,7 @@ html[data-lang="zh"] .brand {
   font-size: 0.76rem;
   line-height: 1.42;
   color: var(--slate);
+  overflow-wrap: anywhere;
 }
 
 /* compact experimental case tiles ------------------------------------ */

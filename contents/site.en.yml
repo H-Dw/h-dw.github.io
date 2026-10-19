@@ -72,11 +72,10 @@ research:
         evaluation and inference-time search.
       stages:
         - id: space
-          core: true
           title: Co-denoising Binder Design in a Unified Complex Latent Space
           subtitle: Jointly representing interface geometry and target–binder coupling
           tags:
-            - { text: "NeurIPS 2026 · under review", kind: accent }
+            - { text: "ICLR 2027 · under review", kind: accent }
             - { text: "First author", kind: accent }
           question: >-
             Mainstream binder-design methods encode targets and binders
@@ -122,8 +121,8 @@ research:
           title: "FANGS: Fragment-Aware Zero-Shot Ranking for Fusion-Protein Design"
           subtitle: Using local structural compatibility to prioritize candidates for wet-lab validation
           tags:
-            - { text: "Manuscript in preparation", kind: muted }
-            - { text: "Wet-lab validated", kind: accent }
+            - { text: "Nature Methods · under review", kind: accent }
+            - { text: "First author", kind: accent }
           question: >-
             Generative models produce more fusion-protein candidates than
             wet-lab budgets can test. Candidate selection needs a ranking signal
@@ -168,41 +167,44 @@ research:
                 evidence: Screening publicly available scaffold databases can identify scaffolds with binding affinities comparable to or stronger than those of their corresponding wild-type (WT) counterparts
 
         - id: prior
-          title: "ESM3-MD: Dynamics-Informed Conformational Sampling via Molecular-Dynamics Distributions"
-          subtitle: Injecting molecular-dynamics distributions into a pretrained structure module
+          title: Collective Supervision for Unified Biomolecular Conformation and Dynamics Modeling with CoDyna
+          subtitle: Unifying conformation sampling and trajectory generation through collective supervision
           tags:
-            - { text: "Ongoing", kind: muted }
-            - { text: "Related work under review at NeurIPS 2026 · co-first author", kind: muted }
+            - { text: "NeurIPS 2026", kind: accent }
+            - { text: "Third author", kind: accent }
           question: >-
-            Molecular-dynamics simulations can cover broad conformational
-            landscapes but are computationally expensive and sample inefficiently.
-            Pretrained protein language models encode static structures well but
-            do not model dynamic conformational distributions, making low-cost
-            sampling of alternative conformations difficult.
+            Per-sample supervision does not directly constrain conformational
+            ensemble distributions or trajectory transition statistics, while
+            teacher forcing leads to drift in long generated trajectories.
+            These limitations hinder reliable conformation sampling and
+            trajectory generation within a unified model.
           insight: >-
-            Temporal information in molecular-dynamics trajectories can be
-            encoded as a **conditional probability distribution** and injected
-            efficiently into a pretrained model's structure module through LoRA,
-            enabling the model to generate dynamic conformations.
+            Combine **ensemble-level supervision of physical distributions**
+            with autoregressive rollout during training. Match conformational
+            ensembles and frame-pair distributions across multiple time intervals,
+            and denoise rolling trajectories conditioned on the model's own
+            generated frames to unify conformation sampling and trajectory generation.
           contributions:
-            - title: Coevolution-aware fragment corpus
+            - title: Collective Supervision
               text: >-
-                A corpus built from homologous fragments carries co-evolutionary
-                signal; the prompt is tuned by multi-objective combinatorial
-                optimisation. Against the pretrained baseline, distance to the
-                alternative state dropped **10%** and intermediate-state
-                diversity rose **9%**.
-            - title: ESM3-MD fine-tuning framework
+                Matched conformational ensemble and multi-interval frame-pair
+                distributions with MMD in an SE(3)-invariant observation space
+                of local atomic distances and dihedral angles. In the template-free
+                ATLAS ablation, pairwise conformational RMSD correlation improved
+                from **0.51 to 0.68**, and RMSF correlation from **0.61 to 0.71**.
+            - title: Collective Rolling Forcing
               text: >-
-                Converted temporal information from molecular-dynamics
-                trajectories into a probability distribution and used LoRA to
-                parameter-efficiently fine-tune the ESM3 structure module,
-                improving conformational coverage by approximately **22%** over
-                conventional methods.
+                Performed rolling denoising on model-generated frames, using a
+                two-level KV cache to limit error accumulation. Unified modeling
+                of protein monomers, protein–ligand complexes and protein–protein
+                complexes. Across 16 ATLAS systems extrapolated to 2,500 frames,
+                late-stage Ramachandran/Rotamer and Cα geometry validity reached
+                **100% and 99.41%**, respectively.
           metrics:
-            - { value: "−10%", label: "Distance to alternative state" }
-            - { value: "+9%", label: "Intermediate diversity" }
-            - { value: "+22%", label: "Conformational coverage" }
+            - { value: "0.51 → 0.68", label: "Template-free ATLAS · pairwise conformational RMSD correlation" }
+            - { value: "0.61 → 0.71", label: "Template-free ATLAS · RMSF correlation" }
+            - { value: "100%", label: "Late-stage Ramachandran/Rotamer validity · 2,500-frame extrapolation" }
+            - { value: "99.41%", label: "Late-stage Cα geometry validity · 2,500-frame extrapolation" }
 
     - id: agents
       numeral: II
@@ -413,8 +415,9 @@ publications:
   eyebrow: Publications
   title: Papers, preprints and patents
   note: >-
-    Manuscripts without public final titles are listed by research focus, with
-    venue and authorship position.
+    Published and accepted papers, and manuscripts with confirmed titles, use
+    their full titles. Other manuscripts under review are listed by research
+    focus, with venue and authorship position.
   overview_label: Research focus
   not_title_label: Descriptive summary, not manuscript title
   groups:
@@ -422,19 +425,9 @@ publications:
       kind: review
       items:
         - authors: "**Dawei Huang** et al."
-          summary: Latent diffusion for protein design
-          venue: NeurIPS 2026
+          title: Co-denoising Binder Design in a Unified Complex Latent Space
+          venue: ICLR 2027
           role: First author
-          status: Under review
-        - authors: "Kaiwen Cheng, … , **Dawei Huang** et al."
-          summary: Collective supervision for dynamic modeling
-          venue: NeurIPS 2026
-          role: Third author
-          status: Under review
-        - authors: "Jun Wu, … , **Dawei Huang** et al."
-          summary: Cross-task screening with internal representations
-          venue: NeurIPS 2026
-          role: Fourth author
           status: Under review
         - authors: "Zhu Si, … , **Dawei Huang** et al."
           summary: Flexible modeling of protein complexes
@@ -444,6 +437,16 @@ publications:
     - label: Published and accepted
       kind: published
       items:
+        - authors: "Kaiwen Cheng, … , **Dawei Huang** et al."
+          title: Collective Supervision for Unified Biomolecular Conformation and Dynamics Modeling with CoDyna
+          venue: NeurIPS 2026
+          role: Third author
+          status: Accepted
+        - authors: "Jun Wu, … , **Dawei Huang** et al."
+          title: "FoldAbS: Repurposing the Protein Folding Model as a Foundation Encoder for Antibody Screening"
+          venue: NeurIPS 2026
+          role: Fourth author
+          status: Accepted
         - authors: "Tianxu Lv, … , **Dawei Huang** et al."
           title: "UpTCR: a unified progressive knowledge transfer foundation model for robust T-cell receptor-antigen binding recognition"
           venue: Nature Communications, 2026
