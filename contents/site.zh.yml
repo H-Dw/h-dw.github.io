@@ -315,6 +315,11 @@ publications:
           venue: ICLR 2027
           role: 第一作者
           status: 审稿中
+        - authors: "**Dawei Huang** et al."
+          summary: "FANGS: Fragment-Aware Zero-Shot Ranking for Fusion-Protein Design"
+          venue: Nature Methods
+          role: 第一作者
+          status: 审稿中
         - authors: "Zhu Si, … , **Dawei Huang** et al."
           summary: Flexible protein complex modeling
           venue: Nature Microbiology
